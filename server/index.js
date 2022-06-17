@@ -2,28 +2,33 @@
 
 const express = require("express");
 const app = express();
-const pool = require("./config/dbConfig");
+const pool = require("./src/config/dbConfig");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 
-const initializePassport = require("./config/passportConfig");
+const initializePassport = require("./src/config/passportConfig");
 
 const {
   checkAuthenticated,
   checkNotAuthenticated,
-} = require("./middlewares/auth");
+} = require("./src/middlewares/auth");
+// const { csv_to_db } = require("./src/routes_function/data_extractor");
 
-const { registration } = require("./routes_function/registration");
-const { csv_to_db } = require("./routes_function/data_extractor");
-const { generate_questions } = require("./routes_function/generate_questions");
-const { view_all_questions } = require("./routes_function/view_questions");
+const { registration } = require("./src/routes_function/registration");
+const { csv_to_db } = require("./src/routes_function/data_extractor");
+const {
+  generate_questions,
+} = require("./src/routes_function/generate_questions");
+const { view_all_questions } = require("./src/routes_function/view_questions");
 
 initializePassport(passport);
 
+app.set("views", "../client/views");
 app.set("view-engine", "ejs");
+
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(
@@ -34,7 +39,7 @@ app.use(
   })
 );
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname.replace("server", "client/public")));
 
 app.use(passport.initialize());
 app.use(passport.session());
