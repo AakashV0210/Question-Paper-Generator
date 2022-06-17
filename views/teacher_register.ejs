@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css" type="text/css">
+    <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+    rel="stylesheet"
+    />
+    <title>Teacher Register</title>
+</head>
+<body>
+  
+  <ul>
+    <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+    <li><%= error.message %></li>
+    <% }) %> <% } %>
+  </ul>
+
+    <div class="background"></div>
+    <div class="container">
+      <form action="/users/teacher_register" method="POST">
+            <div class="form-item">
+              <span class="material-icons-outlined"> account_circle </span>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Username"
+                required
+              />
+            </div>
+            
+            <div class="form-item">
+              <span class="material-icons-outlined"> account_circle </span>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+
+            <div class="form-item">
+              <span class="material-icons-outlined"> lock </span>
+              <input type="password" name="password" id="password" placeholder="Password" required/>
+            </div>
+
+            <div class="form-item">
+              <span class="material-icons-outlined"> lock </span>
+              <input type="password" name="password2" id="password2" placeholder="Confirm password" required/>
+            </div>
+
+            <button type="submit" value = "Register">SIGN UP</button>
+            <p><a href = "/users/teacher_login">Have an account already? Login here</a></p>
+      </form>
+    </div>
+
+
+    
+</body>
+</html>
