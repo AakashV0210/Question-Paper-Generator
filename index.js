@@ -2,19 +2,24 @@
 
 const express = require("express");
 const app = express();
-const pool = require("./dbConfig");
+const pool = require("./config/dbConfig");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 
-const initializePassport = require("./passportConfig");
+const initializePassport = require("./config/passportConfig");
 
 const {
   checkAuthenticated,
   checkNotAuthenticated,
 } = require("./middlewares/auth");
+
+const { registration } = require("./routes_function/registration");
+const { csv_to_db } = require("./routes_function/data_extractor");
+const { generate_questions } = require("./routes_function/generate_questions");
+const { view_all_questions } = require("./routes_function/view_questions");
 
 initializePassport(passport);
 
@@ -58,69 +63,7 @@ app.get("/users/teacher_register", checkNotAuthenticated, (req, res) => {
 });
 
 app.post("/users/teacher_register", checkNotAuthenticated, async (req, res) => {
-  let { name, email, password, password2 } = req.body;
-
-  // console.log({
-  //   name,
-  //   email,
-  //   password,
-  //   password2,
-  // });
-
-  let errors = [];
-
-  if (!name || !email || !password || !password2) {
-    errors.push({ message: "Please enter all fields" });
-  }
-
-  if (password.length < 6) {
-    errors.push({ message: "Password should be at least 6 characters" });
-  }
-
-  if (password !== password2) {
-    errors.push({ message: "Passwords do not match" });
-  }
-
-  if (errors.length > 0) {
-    res.render("teacher_register.ejs", { errors });
-  } else {
-    // Form validation has passed
-
-    let hashedPassword = await bcrypt.hash(password, 10);
-    // console.log(hashedPassword);
-
-    pool.query(
-      `SELECT * FROM users
-            WHERE email = $1`,
-      [email],
-      (err, results) => {
-        if (err) {
-          throw err;
-        }
-        // console.log(results.rows);
-
-        if (results.rows.length > 0) {
-          errors.push({ message: "Email already registered" });
-          res.render("teacher_register.ejs", { errors });
-        } else {
-          pool.query(
-            `INSERT INTO users (name, email, password)
-                        VALUES ($1, $2, $3)
-                        RETURNING id, password`,
-            [name, email, hashedPassword],
-            (err, results) => {
-              if (err) {
-                throw err;
-              }
-              // console.log(results.rows);
-              req.flash("success_msg", "You are now registered. Please log in");
-              res.redirect("/users/teacher_login");
-            }
-          );
-        }
-      }
-    );
-  }
+  registration(req, res);
 });
 
 app.get("/teacher_page", checkAuthenticated, (req, res) => {
@@ -136,6 +79,18 @@ app.get("/users/logout", (req, res) => {
       res.render("index.ejs", { message: "You have logged out successfully" });
     }
   });
+});
+
+app.put("/csv-to-db", (req, res) => {
+  csv_to_db(req, res);
+});
+
+app.get("/generate-questions", (req, res) => {
+  generate_questions(req, res);
+});
+
+app.get("/view-questions/:filter/:filter_value", (req, res) => {
+  view_all_questions(req, res);
 });
 
 const PORT = process.env.PORT || 4000;
