@@ -1,3 +1,6 @@
+const bcrypt = require("bcrypt");
+const pool = require("../config/dbConfig");
+
 exports.registration = async (req, res) => {
   let { name, email, password, password2 } = req.body;
 
