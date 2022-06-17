@@ -96,6 +96,10 @@ app.get("/view-questions/:filter/:filter_value", (req, res) => {
   view_all_questions(req, res);
 });
 
+app.get("/view-questions", (req, res) => {
+  view_all_questions(req, res);
+});
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

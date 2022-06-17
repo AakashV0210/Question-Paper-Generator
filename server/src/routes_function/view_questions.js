@@ -6,7 +6,7 @@ exports.view_all_questions = async (req, res) => {
     const { filter_value } = req.params;
     // filter = filter.toLowerCase();
     // console.log(filter);
-    if (filter == "none") {
+    if (filter == undefined) {
       const view_questions = await pool.query("SELECT * FROM question_paper");
       // console.log(req.params);
       return res.json(view_questions.rows);
