@@ -33,7 +33,7 @@ body {
 /* Header */
 
 header {
-  color: #9f9c9c;
+  color: #000000;
   padding: 20px 0;
   margin-bottom: 40px;
   text-transform: uppercase;
@@ -98,6 +98,7 @@ header button {
   margin-right: 60px;
   border-top: 3px solid #693f7e;
   background-color: #f9f9f9;
+  text-align: center;
 }
 
 .sidebar ul {
@@ -143,4 +144,47 @@ footer p {
     margin-right: 0;
     margin-bottom: 60px;
   }
+}
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button1 {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.h2 {
+  text-align: center;
 }

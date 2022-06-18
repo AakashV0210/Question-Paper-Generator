@@ -28,13 +28,13 @@
                 <h2>Hello <%= user %></h2>
             <ul>
               <li> 
-                <button type='button' onclick="toggleText2()">Generate Question Paper</button>   
+                <button type='button' class="button1" onclick="toggleText2()">Generate Question Paper</button>   
               </li>  
               <li>                 
-                <button type='button' onclick="toggleText3()">Add Questions</button>
+                <button type='button' class="button1" onclick="toggleText3()">Add Questions</button>
               </li>
               <li> 
-                <button type='button' onclick="toggleText1()">Edit/view Questions list</button>   
+                <button type='button' class="button1" onclick="toggleText1()">Edit/view Questions list</button>   
               </li> 
                 
               </ul>
@@ -45,7 +45,7 @@
                 
                 
                 <div id='viewer' style='display: none'>
-                <form action="/teacher_page" method="POST">
+                <!-- <form action="/teacher_page" method="POST"> -->
                   <div id="syllabus">
                     Select syllabus <br><br>
                     <input type="radio" id="ugc2018" name="syllabus" value="UGC 2018"></input>
@@ -127,7 +127,7 @@
                   <br>
 
                 </div> 
-                </form>
+                <!-- </form> -->
                   
 
 
