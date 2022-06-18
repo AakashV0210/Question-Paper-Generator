@@ -7,9 +7,23 @@ exports.view_all_questions = async (req, res) => {
     // filter = filter.toLowerCase();
     // console.log(filter);
     if (filter == undefined) {
-      const view_questions = await pool.query("SELECT * FROM question_paper");
+      await pool.query(
+        "SELECT * FROM question_paper",
+        function (err, data, fields) {
+          if (err) throw err;
+          arr = data.rows;
+          return res.render("teacher_page.ejs", {
+            // userdata: Object.values(arr),
+            title: "User List",
+            userdata: "hello",
+            // user: req.user.name,
+          });
+          // console.log(Object.values(data.rows));
+          // return res.json(data.rows);
+        }
+      );
       // console.log(req.params);
-      return res.json(view_questions.rows);
+      // return res.json(view_questions.rows);
     } else {
       if (filter.toLowerCase() === "syllabus") {
         const view_questions = await pool.query(

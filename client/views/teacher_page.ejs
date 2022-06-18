@@ -3,7 +3,18 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../css/teacher_page.css" />
-    <script src="../scripts/teacher_page.js"></script>
+    <!-- <script src="../scripts/teacher_page.js"></script> -->
+    <script>
+      function toggleText1() {
+  let text1 = document.getElementById("viewer");
+  // let text2 = document.getElementById("generator");
+
+  if (text1.style.display === "none") {
+    // text2.style.display = "none";
+    text1.style.display = "block";
+  }
+}
+    </script>
   </head>
 
   <body >
@@ -30,111 +41,48 @@
               <li> 
                 <button type='button' class="button1" onclick="toggleText2()">Generate Question Paper</button>   
               </li>  
-              <li>                 
-                <button type='button' class="button1" onclick="toggleText3()">Add Questions</button>
+              <li>        
+                
+                 <button type='button' class="button1" onclick="toggleText3()">Add Questions</button>
+                        
               </li>
               <li> 
-                <button type='button' class="button1" onclick="toggleText1()">Edit/view Questions list</button>   
+                <a href="/view-questions">
+                  <button type='button' class="button1" onclick="toggleText1()">view/edit</button>
+                </a>
               </li> 
                 
               </ul>
             </aside>
             <section class="main">
               <!-- <img src="http://abbeyjfitzgerald.com/wp-content/uploads/2017/06/flexbox-header.jpg"> -->
-                <h2>QUESTION PAPER GENERATOR</h2>
+                <h2 class="h2">QUESTION PAPER GENERATOR</h2>
+
+              <div id='viewer' style='display: none'>
+
                 
-                
-                <div id='viewer' style='display: none'>
-                <!-- <form action="/teacher_page" method="POST"> -->
-                  <div id="syllabus">
-                    Select syllabus <br><br>
-                    <input type="radio" id="ugc2018" name="syllabus" value="UGC 2018"></input>
-                    <label for="ugc2018">UGC 2018</label><br>
-                  </div>
-  
-                  <br>
 
-                  <div id="semester">
-                    Select semester <br><br>
-                    <input type="radio" id="first" name="semester" value="First" onclick="display_chapters()">
-                    <label for="first">First semester</label><br>
-                    <input type="radio" id="second" name="semester" value="Second" onclick="display_chapters()">
-                    <label for="second">Second semester</label><br>  
-                    <input type="radio" id="third" name="semester" value="Third" onclick="display_chapters()">
-                    <label for="third">Third semester</label><br>
-                    <input type="radio" id="fourth" name="semester" value="Fourth" onclick="display_chapters()">
-                    <label for="fourth">Fourth semester</label><br>
-                    <input type="radio" id="fifth" name="semester" value="Fifth" onclick="display_chapters()">
-                    <label for="fifth">Fifth semester</label><br>
-                    <input type="radio" id="sixth" name="semester" value="Sixth" onclick="display_chapters()">
-                    <label for="sixth">Sixth semester</label><br>
-                  </div>
+                <% if(locals.userdata){ %>
+                  <h3><%= userdata %></h3>
+                <% } %>
 
-                  <br>
-
-                  <div id="chapter">
-                    <div id="first_sem" style="display: none;">
-                      Select Chapter <br><br>
-                      <input type="radio" id="first_sem_1" name="chapter" value="1" >
-                      <label for="first_sem_1">Programming in C</label><br>
-                      <input type="radio" id="first_sem_2" class="first_sem" name="chapter" value="2" >
-                      <label for="first_sem_2">Digital Electronics</label><br>
-                    </div>
-                    <div id="second_sem" style="display: none;">
-                      Select Chapter <br><br>
-                      <input type="radio" id="second_sem_1" name="chapter" value="1" >
-                      <label for="second_sem_1">Data Structures</label><br>
-                      <input type="radio" id="second_sem_2" class="second_sem" name="chapter" value="2" >
-                      <label for="second_sem_2">Operating Systems</label><br>
-                    </div>
-                    <div id="third_sem" style="display: none;">
-                      Select Chapter <br><br>
-                      <input type="radio" id="third_sem_1" name="chapter" value="1" >
-                      <label for="third_sem_1">Python Programming</label><br>
-                      <input type="radio" id="third_sem_2" class="third_sem" name="chapter" value="2" >
-                      <label for="third_sem_2">DBMS</label><br>
-                    </div>
-                    <div id="fourth_sem" style="display: none;">
-                      Select Chapter <br><br>
-                      <input type="radio" id="fourth_sem_1" name="chapter" value="1" >
-                      <label for="fourth_sem_1">.NET Technologies</label><br>
-                    </div>
-                    <div id="fifth_sem" style="display: none;">
-                      Select Chapter <br><br>
-                      <input type="radio" id="fifth_sem_1" class="fifth_sem" name="chapter" value="3" >
-                      <label for="fifth_sem_1">Java Programming</label><br>
-                      <input type="radio" id="fifth_sem_2" class="fifth_sem" name="chapter" value="4" >
-                      <label for="fifth_sem_2">Software Engineering</label><br>
-                    </div>
-                    <div id="sixth_sem" style="display: none;">
-                      Select Chapter <br><br>
-                      <input type="radio" id="sixth_sem_1" name="chapter" value="3" >
-                      <label for="fifth_sem_1">Graphics</label><br>
-                      <input type="radio" id="sixth_sem_2" class="sixth_sem" name="chapter" value="4" >
-                      <label for="fifth_sem_2">Networks</label><br>
-                    </div>
-
-                  </div>
-
-                  <br>
-
-                  <div id="unit"></div>
-
-                  <br>
-
-                  <div id="marks"></div>
-
-                  <br>
-
-                </div> 
-                <!-- </form> -->
+                <table border="1">
+                  <tr>
+                      <th>syllabus</th>
+                      <th>semester</th>
+                      <th>chapter</th>
+                      <th>unit</th>
+                      <th>marks</th>
+                      <th>priority</th>
+                      <th>question</th>
+                      <th>edit</th>
+                      <th>delete</th>
+                  </tr>
                   
+                  
+              </table>
 
-
-                <div id='generator' style='display: none'>
-                  wrevv
-                </div>
-    
+              </div>
               
             </section>
         </div>

@@ -3,7 +3,7 @@ exports.checkAuthenticated = (req, res, next) => {
     return next();
   }
 
-  res.redirect("/users/teacher_loginn");
+  res.redirect("/users/teacher_login");
 };
 
 exports.checkNotAuthenticated = (req, res, next) => {
