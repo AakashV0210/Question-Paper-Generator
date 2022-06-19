@@ -22,19 +22,35 @@ exports.view_all_questions = async (req, res) => {
       // return res.json(view_questions.rows);
     } else {
       if (filter.toLowerCase() === "syllabus") {
-        const view_questions = await pool.query(
+        await pool.query(
           "SELECT * FROM question_paper WHERE LOWER(syllabus) = $1",
-          [filter_value.toLowerCase()]
+          [filter_value.toLowerCase()],
+          function (err, data, fields) {
+            if (err) throw err;
+            return res.render("teacher_page.ejs", {
+              path: req.url,
+              userdata: Object.values(data.rows),
+              user: req.user.name,
+            });
+          }
         );
         // console.log(req.params);
-        return res.json(view_questions.rows);
+        // return res.json(view_questions.rows);
       } else if (filter.toLowerCase() === "semester") {
-        const view_questions = await pool.query(
+        await pool.query(
           "SELECT * FROM question_paper WHERE semester = $1",
-          [filter_value]
+          [filter_value],
+          function (err, data, fields) {
+            if (err) throw err;
+            return res.render("teacher_page.ejs", {
+              path: req.url,
+              userdata: Object.values(data.rows),
+              user: req.user.name,
+            });
+          }
         );
         // console.log(req.params);
-        return res.json(view_questions.rows);
+        // return res.json(view_questions.rows);
       } else if (filter.toLowerCase() === "chapter") {
         const view_questions = await pool.query(
           "SELECT * FROM question_paper WHERE LOWER(chapter) = $1",

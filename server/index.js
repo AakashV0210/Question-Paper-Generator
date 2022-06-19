@@ -92,9 +92,13 @@ app.get("/teacher_page/generate-questions", (req, res) => {
   generate_questions(req, res);
 });
 
-app.get("/teacher_page/view-questions/:filter/:filter_value", (req, res) => {
-  view_all_questions(req, res);
-});
+app.get(
+  "/teacher_page/view-questions/:filter/:filter_value",
+  checkAuthenticated,
+  (req, res) => {
+    view_all_questions(req, res);
+  }
+);
 
 app.get("/teacher_page/view-questions-all", checkAuthenticated, (req, res) => {
   view_all_questions(req, res);
