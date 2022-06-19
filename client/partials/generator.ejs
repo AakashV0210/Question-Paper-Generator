@@ -1,0 +1,11 @@
+<div id="generator" style="display: none">
+  <div id="generated_questions">
+    <% if(locals.userdata){ %>
+    <ul>
+      <% var i = 1; userdata.forEach(function(data){ %>
+      <li><%=i%>. <%= data %></li>
+      <% i++; }) %>
+    </ul>
+    <% } %>
+  </div>
+</div>

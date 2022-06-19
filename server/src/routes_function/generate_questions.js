@@ -72,11 +72,16 @@ exports.generate_questions = async (req, res) => {
         // console.log(priority_1_arr);
       }
     }
-    let d = {};
+    let GENERATED_QUESTIONS = {};
     for (let i = 0; i < generated_questions_arr.length; i++) {
-      d[i + 1] = generated_questions_arr[i];
+      GENERATED_QUESTIONS[i + 1] = generated_questions_arr[i];
     }
-    return res.json(d);
+
+    return res.render("teacher_page.ejs", {
+      user: req.user.name,
+      path: req.url,
+      userdata: Object.values(GENERATED_QUESTIONS),
+    });
   } catch (err) {
     console.error(err.message);
   }

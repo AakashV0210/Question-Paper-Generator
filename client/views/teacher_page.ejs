@@ -13,8 +13,9 @@
  
   <% if(path.includes("view-questions")){ %>
     <body onload="toggleText1()">
+  <% } else if(path.includes("generate-questions")){ %>
+    <body onload = "toggleText2()">
   <% } else{ %>
-
     <body>
   <% } %>
   <!-- <body> -->
@@ -30,6 +31,8 @@
                 <h2 class="h2">QUESTION PAPER GENERATOR</h2>
 
                 <%- include('../partials/viewer'); %>
+
+                <%- include('../partials/generator'); %>
     
         <footer>
             <!-- <h3>Flexbox Layout Example</h3>
