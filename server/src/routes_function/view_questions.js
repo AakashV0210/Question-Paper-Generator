@@ -12,7 +12,7 @@ exports.view_all_questions = async (req, res) => {
         function (err, data, fields) {
           if (err) throw err;
           return res.render("teacher_page.ejs", {
-            page: req.url,
+            path: req.url,
             userdata: Object.values(data.rows),
             user: req.user.name,
           });

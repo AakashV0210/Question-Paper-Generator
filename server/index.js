@@ -71,7 +71,7 @@ app.post("/users/teacher_register", checkNotAuthenticated, async (req, res) => {
 
 app.get("/teacher_page", checkAuthenticated, (req, res) => {
   // console.log(req.isAuthenticated());
-  res.render("teacher_page.ejs", { user: req.user.name, page: req.url });
+  res.render("teacher_page.ejs", { user: req.user.name, path: req.url });
 });
 
 app.get("/users/logout", (req, res) => {
@@ -96,7 +96,7 @@ app.get("/teacher_page/view-questions/:filter/:filter_value", (req, res) => {
   view_all_questions(req, res);
 });
 
-app.get("/teacher_page/view-questions", checkAuthenticated, (req, res) => {
+app.get("/teacher_page/view-questions-all", checkAuthenticated, (req, res) => {
   view_all_questions(req, res);
 });
 
