@@ -44,11 +44,11 @@ app.use(passport.session());
 app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", { path: req.url });
 });
 
 app.get("/users/teacher_login", checkNotAuthenticated, (req, res) => {
-  res.render("teacher_login.ejs");
+  res.render("teacher_login.ejs", { path: req.url });
 });
 
 app.post(
@@ -62,7 +62,7 @@ app.post(
 );
 
 app.get("/users/teacher_register", checkNotAuthenticated, (req, res) => {
-  res.render("teacher_register.ejs");
+  res.render("teacher_register.ejs", { path: req.url });
 });
 
 app.post("/users/teacher_register", checkNotAuthenticated, async (req, res) => {
@@ -71,7 +71,7 @@ app.post("/users/teacher_register", checkNotAuthenticated, async (req, res) => {
 
 app.get("/teacher_page", checkAuthenticated, (req, res) => {
   // console.log(req.isAuthenticated());
-  res.render("teacher_page.ejs", { user: req.user.name });
+  res.render("teacher_page.ejs", { user: req.user.name, page: req.url });
 });
 
 app.get("/users/logout", (req, res) => {
@@ -84,20 +84,24 @@ app.get("/users/logout", (req, res) => {
   });
 });
 
-app.put("/csv-to-db", (req, res) => {
+app.put("/teacher_page/csv-to-db", (req, res) => {
   csv_to_db(req, res);
 });
 
-app.get("/generate-questions", (req, res) => {
+app.get("/teacher_page/generate-questions", (req, res) => {
   generate_questions(req, res);
 });
 
-app.get("/view-questions/:filter/:filter_value", (req, res) => {
+app.get("/teacher_page/view-questions/:filter/:filter_value", (req, res) => {
   view_all_questions(req, res);
 });
 
-app.get("/view-questions", (req, res) => {
+app.get("/teacher_page/view-questions", checkAuthenticated, (req, res) => {
   view_all_questions(req, res);
+});
+
+app.get("*", (req, res) => {
+  res.send("Sorry, this is an invalid URL.");
 });
 
 const PORT = process.env.PORT || 4000;

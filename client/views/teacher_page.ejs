@@ -3,89 +3,29 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../css/teacher_page.css" />
-    <!-- <script src="../scripts/teacher_page.js"></script> -->
-    <script>
-      function toggleText1() {
-  let text1 = document.getElementById("viewer");
-  // let text2 = document.getElementById("generator");
+    <script type="text/javascript" src="/scripts/teacher_page.js"></script>
 
-  if (text1.style.display === "none") {
-    // text2.style.display = "none";
-    text1.style.display = "block";
-  }
-}
-    </script>
   </head>
+ 
+  <% if(page.includes("view-questions")){ %>
+    <body onload="toggleText1()">
+  <% } else{ %>
 
-  <body >
+    <body>
+  <% } %>
+  <!-- <body> -->
     <div class="container">
-        
-        <header>
-            <nav>
-              <ul>
-                <li class="logo"><a href="#"><i class="fa fa-file-code-o" aria-hidden="true"></i>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </nav>
-            <button>
-            <a href="/users/logout">Logout</a>
-            </button>
-        </header>
+      <%- include('../partials/header'); %>
+     
     
         <div class="wrapper">
-            <aside class="sidebar">
-    
-                <h2>Hello <%= user %></h2>
-            <ul>
-              <li> 
-                <button type='button' class="button1" onclick="toggleText2()">Generate Question Paper</button>   
-              </li>  
-              <li>        
-                
-                 <button type='button' class="button1" onclick="toggleText3()">Add Questions</button>
-                        
-              </li>
-              <li> 
-                <a href="/view-questions">
-                  <button type='button' class="button1" onclick="toggleText1()">view/edit</button>
-                </a>
-              </li> 
-                
-              </ul>
-            </aside>
+          <%- include('../partials/sidebar'); %>
+            
             <section class="main">
               <!-- <img src="http://abbeyjfitzgerald.com/wp-content/uploads/2017/06/flexbox-header.jpg"> -->
                 <h2 class="h2">QUESTION PAPER GENERATOR</h2>
 
-              <div id='viewer' style='display: none'>
-
-                
-
-                <% if(locals.userdata){ %>
-                  <h3><%= userdata %></h3>
-                <% } %>
-
-                <table border="1">
-                  <tr>
-                      <th>syllabus</th>
-                      <th>semester</th>
-                      <th>chapter</th>
-                      <th>unit</th>
-                      <th>marks</th>
-                      <th>priority</th>
-                      <th>question</th>
-                      <th>edit</th>
-                      <th>delete</th>
-                  </tr>
-                  
-                  
-              </table>
-
-              </div>
-              
-            </section>
-        </div>
+                <%- include('../partials/viewer'); %>
     
         <footer>
             <!-- <h3>Flexbox Layout Example</h3>
@@ -93,6 +33,7 @@
         </footer>
     
     </div>
+    
     </div>
   </body>
 </html>

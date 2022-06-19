@@ -1,0 +1,37 @@
+<div id="viewer" style="display: none">
+  <% if(locals.userdata){ %>
+  <table border="1">
+    <tr>
+      <th>syllabus</th>
+      <th>semester</th>
+      <th>chapter</th>
+      <th>unit</th>
+      <th>marks</th>
+      <th>priority</th>
+      <th>question</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+
+    <% if(userdata.length!=0){ var i=1; userdata.forEach(function(data){ %>
+    <tr>
+      <td><%=data.syllabus %></td>
+      <td><%=data.semester %></td>
+      <td><%=data.chapter %></td>
+      <td><%=data.unit %></td>
+      <td><%=data.marks %></td>
+      <td><%=data.priority %></td>
+      <td><%=data.question %></td>
+      <!-- <td><a href="/users/edit/<%=data.id%>">Edit</a></td>
+            <td><a href="/users/delete/<%=data.id%>">Delete</a></td> -->
+      <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+    <% i++; }) %> <% } else{ %>
+    <tr>
+      <td colspan="9">No Data Found</td>
+    </tr>
+    <% } %>
+  </table>
+  <% } %>
+</div>
