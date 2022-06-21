@@ -15,9 +15,11 @@
     <body onload="toggleText1()">
   <% } else if(path.includes("generate-questions")){ %>
     <body onload = "toggleText2()">
-  <% } else{ %>
-    <body>
-  <% } %>
+  <% } else if(path.includes("add-questions")){ %>
+    <body onload = "toggleText3()">
+  <% } else { %>
+    <body> 
+  <% } %>    
   <!-- <body> -->
     <div class="container">
       <%- include('../partials/header'); %>
@@ -33,8 +35,11 @@
                 <%- include('../partials/viewer'); %>
 
                 <%- include('../partials/generator'); %>
-    
+
+                <%- include('../partials/add'); %>
+        </div>    
         <footer>
+
             <!-- <h3>Flexbox Layout Example</h3>
             <p>Hope you enjoyed learning about Flexbox Layouts!</p> -->
         </footer>
