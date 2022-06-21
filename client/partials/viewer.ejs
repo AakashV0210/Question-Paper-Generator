@@ -6,9 +6,9 @@
     <label for="syllabus_filter">Syllabus</label><br>
     <input type="radio" id="semester_filter" name="filter" onclick="select_semester()" value="semester"></input>
     <label for="semester_filter">Semester</label><br>
-    <input type="radio" id="chapter_filter" name="filter" ></input>
+    <input type="radio" id="chapter_filter" name="filter" onclick="display_search_box()" value="chapter" ></input>
     <label for="chapter_filter">Chapter</label><br>
-    <input type="radio" id="question_filter" name="filter" ></input>
+    <input type="radio" id="question_filter" name="filter" onclick="display_search_box()" value="questions"></input>
     <label for="question_filter">Questions</label><br>
   </div>
 
@@ -38,6 +38,15 @@
     <label for="sem_5">5</label><br>
     <input type="radio" id="sem_6" name="semester" onclick="display_filter_button()"value = "6"></input>
     <label for="sem_6">6</label><br>
+  </div>
+
+  <div id="search_box" style="display: none;">
+    <!-- TYPE CHAPTER NAME  -->
+
+    <label for="filter_input">Search Entry:</label>
+    <input type="text" id="filter_input" name="filter_input" oninput="search_item()"><br><br>
+    <a onclick="search_item()" id="search_item" href="" ></a>
+
   </div>
 
   <div id="filter_button" style="display:none ;">
