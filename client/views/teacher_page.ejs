@@ -13,7 +13,7 @@
  
   <% if(path.includes("view-questions")){ %>
     <body onload="toggleText1()">
-  <% } else if(path.includes("generate-questions")){ %>
+  <% } else if((path.includes("generate-question-view")) || (path.includes("generate-questions"))){ %>
     <body onload = "toggleText2()">
   <% } else if(path.includes("add-questions")){ %>
     <body onload = "toggleText3()">

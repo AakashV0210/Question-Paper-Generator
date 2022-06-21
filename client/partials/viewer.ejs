@@ -6,9 +6,9 @@
     <label for="syllabus_filter">Syllabus</label><br>
     <input type="radio" id="semester_filter" name="filter" onclick="select_semester()" value="semester"></input>
     <label for="semester_filter">Semester</label><br>
-    <input type="radio" id="chapter_filter" name="filter" ></input>
+    <input type="radio" id="chapter_filter" name="filter" onclick="display_search_box()" value="chapter" ></input>
     <label for="chapter_filter">Chapter</label><br>
-    <input type="radio" id="question_filter" name="filter" ></input>
+    <input type="radio" id="question_filter" name="filter" onclick="display_search_box()" value="questions"></input>
     <label for="question_filter">Questions</label><br>
   </div>
 
@@ -16,9 +16,9 @@
 
   <div id="syllabus" style="display:none ;">
     SELECT SYLLABUS<br><br>
-    <input type="radio" id="ugc2015" name="syllabus" onclick="display_button()"value="ugc 2015"></input>
+    <input type="radio" id="ugc2015" name="syllabus" onclick="display_filter_button()"value="ugc 2015"></input>
     <label for="ugc2015">UGC 2015</label><br>
-    <input type="radio" id="ugc2018" name="syllabus" onclick="display_button()" value="ugc 2018"></input>
+    <input type="radio" id="ugc2018" name="syllabus" onclick="display_filter_button()" value="ugc 2018"></input>
     <label for="ugc2018">UGC 2018</label><br>
   </div>
 
@@ -26,18 +26,27 @@
 
   <div id="semester" style="display:none ;">
     SELECT SEMESTER<br><br>
-    <input type="radio" id="sem_1" name="semester" onclick="display_button()" value = "1"></input>
+    <input type="radio" id="sem_1" name="semester" onclick="display_filter_button()" value = "1"></input>
     <label for="sem_1">1</label><br>
-    <input type="radio" id="sem_2" name="semester" onclick="display_button()" value = "2"></input>
+    <input type="radio" id="sem_2" name="semester" onclick="display_filter_button()" value = "2"></input>
     <label for="sem_2">2</label><br>
-    <input type="radio" id="sem_3" name="semester" onclick="display_button()" value = "3"></input>
+    <input type="radio" id="sem_3" name="semester" onclick="display_filter_button()" value = "3"></input>
     <label for="sem_3">3</label><br>
-    <input type="radio" id="sem_4" name="semester" onclick="display_button()"value = "4"></input>
+    <input type="radio" id="sem_4" name="semester" onclick="display_filter_button()"value = "4"></input>
     <label for="sem_4">4</label><br>
-    <input type="radio" id="sem_5" name="semester" onclick="display_button()"value = "5"></input>
+    <input type="radio" id="sem_5" name="semester" onclick="display_filter_button()"value = "5"></input>
     <label for="sem_5">5</label><br>
-    <input type="radio" id="sem_6" name="semester" onclick="display_button()"value = "6"></input>
+    <input type="radio" id="sem_6" name="semester" onclick="display_filter_button()"value = "6"></input>
     <label for="sem_6">6</label><br>
+  </div>
+
+  <div id="search_box" style="display: none;">
+    <!-- TYPE CHAPTER NAME  -->
+
+    <label for="filter_input">Search Entry:</label>
+    <input type="text" id="filter_input" name="filter_input" oninput="search_item()"><br><br>
+    <a onclick="search_item()" id="search_item" href="" ></a>
+
   </div>
 
   <div id="filter_button" style="display:none ;">

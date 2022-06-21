@@ -88,9 +88,21 @@ app.put("/teacher_page/csv-to-db", (req, res) => {
   csv_to_db(req, res);
 });
 
-app.get("/teacher_page/generate-questions", (req, res) => {
-  generate_questions(req, res);
-});
+app.get(
+  "/teacher_page/generate-questions/:syllabus/:semester",
+  checkAuthenticated,
+  (req, res) => {
+    generate_questions(req, res);
+  }
+);
+
+app.get(
+  "/teacher_page/generate-question-view",
+  checkAuthenticated,
+  (req, res) => {
+    res.render("teacher_page.ejs", { user: req.user.name, path: req.url });
+  }
+);
 
 app.get(
   "/teacher_page/view-questions/:filter/:filter_value",

@@ -51,6 +51,7 @@ function select_syllabus() {
   document.getElementById("filter_button").style.display = "none";
   document.getElementById("syllabus").style.display = "none";
   document.getElementById("semester").style.display = "none";
+  document.getElementById("search_box").style.display = "none";
   document.getElementById("syllabus").style.display = "block";
   for (let i = 0; i < radiobutton.length; i++) {
     if (radiobutton[i].checked) {
@@ -65,16 +66,31 @@ function select_semester() {
   document.getElementById("filter_button").style.display = "none";
   document.getElementById("syllabus").style.display = "none";
   document.getElementById("semester").style.display = "none";
+  document.getElementById("search_box").style.display = "none";
   document.getElementById("semester").style.display = "block";
   for (let i = 0; i < radiobutton.length; i++) {
     if (radiobutton[i].checked) {
       filter = radiobutton[i].value;
-      console.log(filter);
+      // console.log(filter);
     }
   }
 }
 
-function display_button() {
+function display_search_box() {
+  var radiobutton = document.getElementsByName("filter");
+  document.getElementById("filter_button").style.display = "none";
+  document.getElementById("syllabus").style.display = "none";
+  document.getElementById("semester").style.display = "none";
+  document.getElementById("syllabus").style.display = "none";
+  document.getElementById("search_box").style.display = "block";
+  for (let i = 0; i < radiobutton.length; i++) {
+    if (radiobutton[i].checked) {
+      filter = radiobutton[i].value;
+    }
+  }
+}
+
+function display_filter_button() {
   var radiobutton = document.getElementsByName(filter);
 
   document.getElementById("filter_button").style.display = "block";
@@ -91,3 +107,52 @@ function display_button() {
   document.getElementById("filtered_questions").setAttribute("href", path);
 }
 
+function search_item() {
+  filter_val = document.getElementById("filter_input").value;
+  console.log(filter);
+  console.log(filter_val);
+
+  if (filter_val == undefined) {
+    document.write("Enter a valid search");
+  } else {
+    const path = "/teacher_page/view-questions/" + filter + "/" + filter_val;
+    document.getElementById("filter_button").style.display = "block";
+    console.log;
+    document.getElementById("filtered_questions").textContent = path;
+    document.getElementById("filtered_questions").setAttribute("href", path);
+  }
+}
+
+let generator_semester_value, generator_syllabus_value;
+
+function display_generate_semester() {
+  var syllabus_radio_button = document.getElementsByName("generator_syllabus");
+  for (let i = 0; i < syllabus_radio_button.length; i++) {
+    if (syllabus_radio_button[i].checked) {
+      generator_syllabus_value = syllabus_radio_button[i].value;
+      document.getElementById("question_generator_semester").style.display =
+        "block";
+    }
+  }
+}
+
+function display_generate_button() {
+  var semester_radio_button = document.getElementsByName("generator_semester");
+  for (let i = 0; i < semester_radio_button.length; i++) {
+    if (semester_radio_button[i].checked) {
+      generator_semester_value = semester_radio_button[i].value;
+      document.getElementById("generate_button").style.display = "block";
+      break;
+    }
+  }
+  console.log(generator_syllabus_value);
+  console.log(generator_semester_value);
+
+  const path =
+    "/teacher_page/generate-questions/" +
+    generator_syllabus_value +
+    "/" +
+    generator_semester_value;
+  document.getElementById("generate_question_paper").textContent = path;
+  document.getElementById("generate_question_paper").setAttribute("href", path);
+}
