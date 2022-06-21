@@ -7,3 +7,27 @@ UGC 2018,5,System Software,2,6,1,Explain Compile and Go loader scheme.
 UGC 2015,5,System Software,3,6,3,ABC.
 UGC 2015,5,System Software,1,6,2,XYZ.
 UGC 2015,5,System Software,1,6,1,PQR.
+UGC 2018,5,JAVA,1,2,1,AB
+UGC 2018,5,JAVA,2,2,1,BC
+UGC 2018,5,JAVA,3,2,2,CD
+UGC 2018,5,JAVA,4,2,1,EF
+UGC 2018,5,JAVA,5,2,1,FG
+UGC 2018,5,Software Engineering,1,2,2,GH
+UGC 2018,5,Software Engineering,2,2,1,HI
+UGC 2018,5,Software Engineering,3,2,2,IJ
+UGC 2018,5,Software Engineering,4,2,1,JK
+UGC 2018,5,Software Engineering,5,2,1,KL
+UGC 2018,5,JAVA,2,6,4,BCD
+UGC 2018,5,JAVA,3,3,2,CDE
+UGC 2018,5,JAVA,4,3,2,CDEE
+UGC 2018,5,JAVA,5,4,1,DEF
+UGC 2018,5,JAVA,5,2,1,DEFF
+UGC 2018,5,Software Engineering,1,6,2,FGH
+UGC 2018,5,Software Engineering,2,6,2,GHI
+UGC 2018,5,Software Engineering,3,5,1,HIJ
+UGC 2018,5,Software Engineering,4,1,1,HIJJ
+UGC 2018,5,Software Engineering,5,6,3,IJK
+UGC 2018,5,JAVA,1,5,3,ABCDE 
+UGC 2018,5,JAVA,1,5,3,ABCDEE 
+UGC 2018,5,Software Engineering,4,10,5,BCDEF
+UGC 2018,5,Software Engineering,5,10,3,CDEFG

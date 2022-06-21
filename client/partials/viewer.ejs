@@ -55,9 +55,10 @@
 
   <% } %> 
   
-  ALL QUESTIONS
+
 
   <% if(locals.userdata){ %>
+    ALL QUESTIONS
   <table border="1">
     <tr>
       <th>syllabus</th>
@@ -80,10 +81,10 @@
       <td><%=data.marks %></td>
       <td><%=data.priority %></td>
       <td><%=data.question %></td>
-      <!-- <td><a href="/users/edit/<%=data.id%>">Edit</a></td>
-            <td><a href="/users/delete/<%=data.id%>">Delete</a></td> -->
-      <td><a href="#">Edit</a></td>
-      <td><a href="#">Delete</a></td>
+      <td><a href="/teacher_page/edit-page/<%=data.id%>">Edit</a></td>
+            <td><a href="/teacher_page/delete-entry/<%=data.id%>">Delete</a></td>
+      <!-- <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td> -->
     </tr>
     <% i++; }) %> <% } else{ %>
     <tr>
@@ -91,5 +92,29 @@
     </tr>
     <% } %>
   </table>
+  <% } %>
+
+  <% if(locals.edit_data){ %>
+    <p><%=edit_data.id%></p> 
+
+    <h3>Edit the boxes to be modified</h3>
+    <a id="edit_id" style="display: none;"><%=edit_data.id %></a>
+    <label for="edit_syllabus">syllabus</label>
+    <input type="text" id="edit_syllabus" name="edit_syllabus" value="<%=edit_data.syllabus %>" ><br><br>
+    <label for="edit_semester">semester</label>
+    <input type="text" id="edit_semester" name="edit_semester" value="<%=edit_data.semester%>" ><br><br>
+    <label for="edit_chapter">chapter</label>
+    <input type="text" id="edit_chapter" name="edit_chapter" value="<%=edit_data.chapter %>" ><br><br>
+    <label for="edit_unit">unit</label>
+    <input type="text" id="edit_unit" name="edit_unit" value="<%=edit_data.unit %>" ><br><br>
+    <label for="edit_marks">marks</label>
+    <input type="text" id="edit_marks" name="edit_marks" value="<%=edit_data.marks %>" ><br><br>
+    <label for="edit_priority">priority</label>
+    <input type="text" id="edit_priority" name="edit_priority" value="<%=edit_data.priority %>" ><br><br>
+    <label for="edit_question">question</label>
+    <input type="text" id="edit_question" name="edit_question" value="<%=edit_data.question %>" ><br><br>
+    <a onclick="submit_edit()" id="submit_edit" href="" >ewefsdv</a>
+
+
   <% } %>
 </div>

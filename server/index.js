@@ -21,6 +21,7 @@ const {
   generate_questions,
 } = require("./src/routes_function/generate_questions");
 const { view_all_questions } = require("./src/routes_function/view_questions");
+const { edit_page, edit_entry } = require("./src/routes_function/edit_entry");
 
 initializePassport(passport);
 
@@ -114,6 +115,23 @@ app.get(
 
 app.get("/teacher_page/view-questions-all", checkAuthenticated, (req, res) => {
   view_all_questions(req, res);
+});
+
+app.get("/teacher_page/edit-page/:id", checkAuthenticated, (req, res) => {
+  // console.log(req.params);
+  edit_page(req, res);
+});
+
+app.get(
+  "/teacher_page/edit-page/:id/:syllabus/:semester/:chapter/:unit/:marks/:priority/:question",
+  checkAuthenticated,
+  (req, res) => {
+    edit_entry(req, res);
+  }
+);
+
+app.get("/teacher_page/add-questions", checkAuthenticated, (req, res) => {
+  res.render("teacher_page.ejs", { user: req.user.name, path: req.url });
 });
 
 app.get("*", (req, res) => {

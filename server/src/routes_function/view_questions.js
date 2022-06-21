@@ -11,7 +11,7 @@ exports.view_all_questions = async (req, res) => {
           if (err) throw err;
           return res.render("teacher_page.ejs", {
             path: req.url,
-            userdata: Object.values(data.rows),
+            userdata: data.rows,
             user: req.user.name,
           });
         }
@@ -25,7 +25,7 @@ exports.view_all_questions = async (req, res) => {
             if (err) throw err;
             return res.render("teacher_page.ejs", {
               path: req.url,
-              userdata: Object.values(data.rows),
+              userdata: data.rows,
               user: req.user.name,
             });
           }
@@ -38,7 +38,7 @@ exports.view_all_questions = async (req, res) => {
             if (err) throw err;
             return res.render("teacher_page.ejs", {
               path: req.url,
-              userdata: Object.values(data.rows),
+              userdata: data.rows,
               user: req.user.name,
             });
           }
@@ -49,9 +49,10 @@ exports.view_all_questions = async (req, res) => {
           [filter_value.toLowerCase() + "%"],
           function (err, data, fields) {
             if (err) throw err;
+            console.log(data.rows);
             return res.render("teacher_page.ejs", {
               path: req.url,
-              userdata: Object.values(data.rows),
+              userdata: data.rows,
               user: req.user.name,
             });
           }
@@ -64,7 +65,7 @@ exports.view_all_questions = async (req, res) => {
             if (err) throw err;
             return res.render("teacher_page.ejs", {
               path: req.url,
-              userdata: Object.values(data.rows),
+              userdata: data.rows,
               user: req.user.name,
             });
           }
