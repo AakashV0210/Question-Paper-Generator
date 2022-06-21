@@ -22,6 +22,7 @@ const {
 } = require("./src/routes_function/generate_questions");
 const { view_all_questions } = require("./src/routes_function/view_questions");
 const { edit_page, edit_entry } = require("./src/routes_function/edit_entry");
+const { delete_entry } = require("./src/routes_function/delete_entry");
 
 initializePassport(passport);
 
@@ -129,6 +130,10 @@ app.get(
     edit_entry(req, res);
   }
 );
+
+app.get("/teacher_page/delete-entry/:id", checkAuthenticated, (req, res) => {
+  delete_entry(req, res);
+});
 
 app.get("/teacher_page/add-questions", checkAuthenticated, (req, res) => {
   res.render("teacher_page.ejs", { user: req.user.name, path: req.url });
