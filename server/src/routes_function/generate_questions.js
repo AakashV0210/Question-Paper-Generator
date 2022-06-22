@@ -5,9 +5,10 @@ exports.generate_questions = async (req, res) => {
     const { semester } = req.params;
     const { syllabus } = req.params;
     const no_of_questions = 7;
-    // console.log(semester);
 
     //GENERATING 2 MARK QUESTIONS--------------------------------------------------------------------------------------------------
+
+    let GENERATE_MARK_2_QUESTIONS = [];
 
     let total_mark_2_no = 10; //total number of 2 mark questions to be generated
 
@@ -23,8 +24,6 @@ exports.generate_questions = async (req, res) => {
       mark_2_arr = mark_2_arr.concat(Object.values(mark_2_questions.rows[i]));
     }
 
-    // console.log("all 2 mark questions:", mark_2_arr);
-
     for (let i = 0; i < total_mark_2_no; i++) {
       let rand_index = Math.floor(Math.random() * mark_2_arr.length);
       generated_mark_2_arr = generated_mark_2_arr.concat(
@@ -33,8 +32,11 @@ exports.generate_questions = async (req, res) => {
       mark_2_arr.splice(rand_index, 1);
     }
 
+    console.log("2 mark questions:", generated_mark_2_arr);
+
     //GENERATING 6 MARK QUESTIONS------------------------------------------------------------------------------------------------
 
+    let GENERATE_MARK_6_QUESTIONS = [];
     let total_mark_6_no = 7; //total number of 6 mark questions to be generated
 
     let priority_3_mark_6_no = 2; //number of 6 mark questions with priority 3 to be generated
@@ -45,7 +47,6 @@ exports.generate_questions = async (req, res) => {
     let priority_1_mark_6_arr = []; //stores all 6 marks questions with priority 1 for randomly generating
     let generated_priority_1_mark_6_arr = []; //randomly generated 6 mark questions with priority 1
 
-    // let all_mark_6_arr = [];
     let generated_mark_6_arr = []; // randomly generated 6 mark questions without priority restrictions
 
     let generated_mark_4_and_2_arr = []; //randomly generated question with 4 and 2 mark subparts
@@ -80,7 +81,7 @@ exports.generate_questions = async (req, res) => {
       generated_priority_3_mark_6_arr
     );
 
-    //-----------priority 1 mark 6---------------------------
+    //-----------priority 1 mark 6-----------------------------------
 
     const priority_1_mark_6_questions = await pool.query(
       "SELECT question FROM question_paper WHERE priority = 1 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
@@ -106,7 +107,7 @@ exports.generate_questions = async (req, res) => {
       generated_priority_1_mark_6_arr
     );
 
-    //------------------------------------------------------------
+    // Generating random 6 mark questions and split 6 mark questions----------------------
 
     let mark_list_arr = [2, 3, 4, 6]; //different marks for generating questions with
     let count_mark_6 = 0;
@@ -294,15 +295,19 @@ exports.generate_questions = async (req, res) => {
         }
 
         //enter the 4 and 2 mark question as a string for the two-part question
-        let str =
-          "(a). " +
-          temp_mark_4_arr[0] +
-          "(4M); (b). " +
-          temp_mark_2_arr[0] +
-          "(2M)";
+        // let str =
+        //   "(a). " +
+        //   temp_mark_4_arr[0] +
+        //   "(4M); (b). " +
+        //   temp_mark_2_arr[0] +
+        //   "(2M)";
 
         //concatenate the question string with the generate array for 4 and 2 mark question
-        generated_mark_4_and_2_arr = generated_mark_4_and_2_arr.concat(str);
+        generated_mark_4_and_2_arr =
+          generated_mark_4_and_2_arr.concat(temp_mark_4_arr);
+        generated_mark_4_and_2_arr =
+          generated_mark_4_and_2_arr.concat(temp_mark_2_arr);
+
         console.log(generated_mark_4_and_2_arr);
       }
 
@@ -330,14 +335,16 @@ exports.generate_questions = async (req, res) => {
           all_mark_3_arr.splice(rand_index, 1);
         }
 
-        let str =
-          "(a). " +
-          temp_mark_3_arr[0] +
-          "(3M); (b). " +
-          temp_mark_3_arr[1] +
-          "(3M)";
+        // let str =
+        //   "(a). " +
+        //   temp_mark_3_arr[0] +
+        //   "(3M); (b). " +
+        //   temp_mark_3_arr[1] +
+        //   "(3M)";
 
-        generated_mark_3_and_3_arr = generated_mark_3_and_3_arr.concat(str);
+        generated_mark_3_and_3_arr =
+          generated_mark_3_and_3_arr.concat(temp_mark_3_arr);
+
         console.log(generated_mark_3_and_3_arr);
       }
 
@@ -378,22 +385,140 @@ exports.generate_questions = async (req, res) => {
           all_mark_2_arr.splice(rand_index, 1);
         }
 
-        let str =
-          "(a). " +
-          temp_mark_2_arr[0] +
-          "(2M); (b). " +
-          temp_mark_2_arr[1] +
-          "(2M); (c). " +
-          temp_mark_2_arr[2] +
-          "(2M)";
+        // let str =
+        //   "(a). " +
+        //   temp_mark_2_arr[0] +
+        //   "(2M); (b). " +
+        //   temp_mark_2_arr[1] +
+        //   "(2M); (c). " +
+        //   temp_mark_2_arr[2] +
+        //   "(2M)";
 
         generated_mark_2_and_2_and_2_arr =
-          generated_mark_2_and_2_and_2_arr.concat(str);
+          generated_mark_2_and_2_and_2_arr.concat(temp_mark_2_arr);
+
         console.log(generated_mark_2_and_2_and_2_arr);
       }
     }
 
     //GENERATING 10 MARK QUESTIONS------------------------------------------------------------------------------------------------------
+
+    console.log("10 mark questons:");
+
+    let GENERATE_MARK_10_QUESTIONS = [];
+
+    let mark_10_list_arr = [5, 10]; //different marks for generating questions with
+
+    let count_10_mark_5 = 0;
+    let count_10_mark_10 = 0;
+    let total_mark_10_no = 3;
+
+    let generated_mark_5_and_5_arr = [];
+    let temp_mark_5_arr = [];
+
+    let generated_all_mark_10_arr = [];
+
+    for (let j = 0; j < total_mark_10_no; j++) {
+      let rand_mark_index = Math.floor(Math.random() * mark_10_list_arr.length);
+      let rand_mark_choice = mark_10_list_arr[rand_mark_index]; //selecting a number for marks
+
+      if (count_10_mark_10 == 1) {
+        mark_10_list_arr.splice(1, 1); //ensures similar split mark question patterns dont occur over and over again
+      }
+      if (count_10_mark_5 == 1) {
+        mark_10_list_arr.splice(0, 1); //ensures similar split mark question patterns dont occur over and over again
+      }
+
+      console.log(rand_mark_choice);
+
+      //generating a 10 mark question
+
+      if (rand_mark_choice === 10) {
+        count_10_mark_10++;
+
+        let all_mark_10_questions;
+        let all_mark_10_arr = [];
+
+        if (count_10_mark_10 == 1) {
+          all_mark_10_questions = await pool.query(
+            "SELECT question FROM question_paper WHERE marks = 10 AND LOWER(syllabus) = $1 AND semester = $2",
+            [syllabus, semester]
+          );
+        } else if (count_10_mark_10 == 2) {
+          all_mark_10_questions = await pool.query(
+            "SELECT question FROM question_paper WHERE question NOT IN ($3) AND marks = 10 AND LOWER(syllabus) = $1 AND semester = $2",
+            [syllabus, semester, generated_all_mark_10_arr[0]]
+          );
+        }
+
+        for (let i = 0; i < all_mark_10_questions.rows.length; i++) {
+          all_mark_10_arr = all_mark_10_arr.concat(
+            Object.values(all_mark_10_questions.rows[i])
+          );
+        }
+
+        console.log("10 all:", all_mark_10_arr);
+
+        for (let i = 0; i < 1; i++) {
+          let rand_index = Math.floor(Math.random() * all_mark_10_arr.length);
+          generated_all_mark_10_arr = generated_all_mark_10_arr.concat(
+            all_mark_10_arr[rand_index]
+          );
+          all_mark_10_arr.splice(rand_index, 1);
+        }
+
+        console.log(generated_all_mark_10_arr);
+      }
+
+      if (rand_mark_choice === 5) {
+        count_10_mark_5++;
+
+        let all_mark_5_arr = [];
+
+        let all_mark_5_questions;
+
+        if (count_10_mark_5 == 1) {
+          all_mark_5_questions = await pool.query(
+            "SELECT question FROM question_paper WHERE marks = 5 AND LOWER(syllabus) = $1 AND semester = $2",
+            [syllabus, semester]
+          );
+        } else if (count_10_mark_5 == 2) {
+          all_mark_5_questions = await pool.query(
+            "SELECT question FROM question_paper WHERE question NOT IN ($3, $4) AND marks = 5 AND LOWER(syllabus) = $1 AND semester = $2",
+            [syllabus, semester, temp_mark_5_arr[0], temp_mark_5_arr[1]]
+          );
+        }
+
+        for (let i = 0; i < all_mark_5_questions.rows.length; i++) {
+          all_mark_5_arr = all_mark_5_arr.concat(
+            Object.values(all_mark_5_questions.rows[i])
+          );
+        }
+
+        console.log("5 all:", all_mark_5_arr);
+
+        //randomly select two questions out of all selected
+        for (let i = 0; i < 2; i++) {
+          let rand_index = Math.floor(Math.random() * all_mark_5_arr.length);
+          temp_mark_5_arr = temp_mark_5_arr.concat(all_mark_5_arr[rand_index]);
+          all_mark_5_arr.splice(rand_index, 1);
+        }
+
+        // generated_mark_5_and_5_arr = temp_mark_5_arr;
+
+        // console.log("5 generated:", generated_mark_5_and_5_arr);
+
+        let str =
+          "(a). " +
+          temp_mark_5_arr[0] +
+          "(5M); (b). " +
+          temp_mark_5_arr[1] +
+          "(5M)";
+
+        generated_mark_5_and_5_arr = generated_mark_5_and_5_arr.concat(str);
+        console.log("5 generated:", generated_mark_5_and_5_arr);
+      }
+    }
 
     //OLD CODE---------------------------------------------------------------------------------------------------------------------
     // const priority_3_questions = await pool.query(
@@ -480,6 +605,72 @@ exports.generate_questions = async (req, res) => {
     //   path: req.url,
     //   generator_data: Object.values(GENERATED_QUESTIONS),
     // });
+
+    //--------------------------------------------------------------------------------------------------------------------------------
+    GENERATE_MARK_2_QUESTIONS =
+      GENERATE_MARK_2_QUESTIONS.concat(generated_mark_2_arr);
+
+    console.log("2 mark questions:", GENERATE_MARK_2_QUESTIONS);
+
+    GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+      generated_priority_3_mark_6_arr
+    );
+
+    GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+      generated_priority_1_mark_6_arr
+    );
+
+    GENERATE_MARK_6_QUESTIONS =
+      GENERATE_MARK_6_QUESTIONS.concat(generated_mark_6_arr);
+
+    if (generated_mark_4_and_2_arr.length != 0) {
+      GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+        "(a). " +
+          generated_mark_4_and_2_arr[0] +
+          "(4M); (b). " +
+          generated_mark_4_and_2_arr[1] +
+          "(2M)"
+      );
+    }
+
+    if (generated_mark_3_and_3_arr.length != 0) {
+      GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+        "(a). " +
+          generated_mark_3_and_3_arr[0] +
+          "(3M); (b). " +
+          generated_mark_3_and_3_arr[1] +
+          "(3M)"
+      );
+    }
+
+    if (generated_mark_2_and_2_and_2_arr.length != 0) {
+      GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+        "(a). " +
+          generated_mark_2_and_2_and_2_arr[0] +
+          "(2M); (b). " +
+          generated_mark_2_and_2_and_2_arr[1] +
+          "(2M); (c)" +
+          generated_mark_2_and_2_and_2_arr[2] +
+          "(2M)"
+      );
+    }
+
+    GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+      generated_mark_2_and_2_and_2_arr
+    );
+
+    console.log("6 mark questions:", GENERATE_MARK_6_QUESTIONS);
+
+    GENERATE_MARK_10_QUESTIONS = GENERATE_MARK_10_QUESTIONS.concat(
+      generated_all_mark_10_arr
+    );
+
+    GENERATE_MARK_10_QUESTIONS = GENERATE_MARK_10_QUESTIONS.concat(
+      generated_mark_5_and_5_arr
+    );
+
+    console.log("10 mark questions:", GENERATE_MARK_10_QUESTIONS);
+    //-----------------------------------------------------------------------------------------------------------------------------------
   } catch (err) {
     console.error(err.message);
   }

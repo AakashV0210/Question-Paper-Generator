@@ -29,7 +29,7 @@ UGC 2018,5,Software Engineering,4,1,1,HIJJ
 UGC 2018,5,Software Engineering,5,6,3,IJK
 UGC 2018,5,JAVA,1,5,3,ABCDE 
 UGC 2018,5,JAVA,1,5,3,ABCDEE 
-UGC 2018,5,Software Engineering,4,10,5,BCDEF
+UGC 2018,5,Software Engineering,4,10,3,BCDEF
 UGC 2018,5,Software Engineering,5,10,3,CDEFG
 UGC 2018,5,JAVA,3,3,2,X
 UGC 2018,5,JAVA,4,3,2,Y
@@ -42,3 +42,10 @@ UGC 2018,5,Software Engineering,2,2,1,D
 UGC 2018,5,Software Engineering,3,2,2,E
 UGC 2018,5,Software Engineering,4,2,1,F
 UGC 2018,5,Software Engineering,5,2,1,G
+UGC 2018,5,JAVA,2,6,2,H
+UGC 2018,5,JAVA,2,6,2,I
+UGC 2018,5,JAVA,2,6,1,J
+UGC 2018,5,JAVA,2,6,1,K
+UGC 2018,5,JAVA,2,6,3,L
+UGC 2018,5,JAVA,2,5,3,M
+UGC 2018,5,JAVA,2,5,3,N
