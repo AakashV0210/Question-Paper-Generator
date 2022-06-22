@@ -188,3 +188,89 @@ footer p {
 .h2 {
   text-align: center;
 }
+
+
+ /* TABLE */
+
+ .st_table{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.st_viewport{
+  /* max-height: 100px; */
+  overflow: auto;
+}
+.st_viewport{
+  background-color: rgb(62,148,236);
+  color: rgb(27,30,36);
+  margin: 20px 0;
+}
+
+.st_table_header{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background-color: rgb(27,30,36);
+  color: rgb(220,220,220);
+}
+.st_table_header h3{
+  font-weight: 400;
+  margin: 0 20px;
+  padding: 20px 0 0;
+}
+
+.st_table_header .st_row{
+  color: rgba(220,220,220, .7);
+}
+
+.st_row{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+.st_table .st_row:nth-child(even){
+  background-color: rgba(0,0,0, .1)
+}
+
+.st_column{
+  padding: 10px 20px;
+}
+
+._syllabus{
+  min-width: 80px;
+}
+._semester{
+  min-width: 60px;
+}
+._chapter{
+  min-width: 130px;
+}
+._unit{
+  min-width: 130px;
+}
+._marks{
+  min-width: 80px;
+}
+._priority{
+  min-width: 130px;
+}
+._question{
+  min-width: 200px;
+}
+._edit{
+  min-width: 130px;
+}
+._delete{
+  min-width: 130px;
+}

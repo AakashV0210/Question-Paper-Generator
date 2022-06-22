@@ -1,6 +1,9 @@
+<!-- <link rel="stylesheet" href="/css/teacher_page.css"> -->
+
+
 <div id="viewer" style="display: none">
   <% if(path.includes("view-questions-all")) { %>
-  <div id = "filter">
+  <div id = "filter" class="back">
     SELECT FILTER<br><br>
     <input type="radio" id="syllabus_filter" name="filter" onclick="select_syllabus()" value="syllabus"></input>
     <label for="syllabus_filter">Syllabus</label><br>
@@ -14,7 +17,7 @@
 
   <br>
 
-  <div id="syllabus" style="display:none ;">
+  <div id="syllabus" style="display:none ;" class="">
     SELECT SYLLABUS<br><br>
     <input type="radio" id="ugc2015" name="syllabus" onclick="display_filter_button()"value="ugc 2015"></input>
     <label for="ugc2015">UGC 2015</label><br>
@@ -55,41 +58,49 @@
 
   <% } %> 
   
-  ALL QUESTIONS
+  
 
-  <% if(locals.userdata){ %>
-  <table border="1">
-    <tr>
-      <th>syllabus</th>
-      <th>semester</th>
-      <th>chapter</th>
-      <th>unit</th>
-      <th>marks</th>
-      <th>priority</th>
-      <th>question</th>
-      <th>edit</th>
-      <th>delete</th>
-    </tr>
-
-    <% if(userdata.length!=0){ var i=1; userdata.forEach(function(data){ %>
-    <tr>
-      <td><%=data.syllabus %></td>
-      <td><%=data.semester %></td>
-      <td><%=data.chapter %></td>
-      <td><%=data.unit %></td>
-      <td><%=data.marks %></td>
-      <td><%=data.priority %></td>
-      <td><%=data.question %></td>
-      <!-- <td><a href="/users/edit/<%=data.id%>">Edit</a></td>
-            <td><a href="/users/delete/<%=data.id%>">Delete</a></td> -->
-      <td><a href="#">Edit</a></td>
-      <td><a href="#">Delete</a></td>
-    </tr>
-    <% i++; }) %> <% } else{ %>
-    <tr>
-      <td colspan="9">No Data Found</td>
-    </tr>
-    <% } %>
-  </table>
-  <% } %>
+  <main class="st_viewport">
+    <div class="st_wrap_table" data-table_id="0">
+      <header class="st_table_header">
+        <h3 class="bg-black">ALL QUESTIONS</h3>
+        <% if(locals.userdata){ %>
+        <table border="1" class="table-auto">
+          <tr class="st_row">
+            <th class="st_column _syllabus">syllabus</th>
+            <th class="st_column _semester">semester</th>
+            <th class="st_column _chapter">chapter</th>
+            <th class="st_column _unit">unit</th>
+            <th class="st_column _marks">marks</th>
+            <th class="st_column _priority">priority</th>
+            <th class="st_column _question">question</th>
+            <th class="st_column _edit">edit</th>
+            <th class="st_column _delete">delete</th>
+          </tr>
+      </header>
+      <div class="st_table">
+        <% if(userdata.length!=0){ var i=1; userdata.forEach(function(data){ %>
+        <tr class="st_row">
+          <td class="st_column _syllabus"><%=data.syllabus %></td>
+          <td class="st_column _semester"><%=data.semester %></td>
+          <td class="st_column _chapter"><%=data.chapter %></td>
+          <td class="st_column _unit"><%=data.unit %></td>
+          <td class="st_column _marks"><%=data.marks %></td>
+          <td class="st_column _priority"><%=data.priority %></td>
+          <td class="st_column _question"><%=data.question %></td>
+          <!-- <td><a href="/users/edit/<%=data.id%>">Edit</a></td>
+                <td><a href="/users/delete/<%=data.id%>">Delete</a></td> -->
+          <td class="st_column _edit"><a href="#">Edit</a></td>
+          <td class="st_column _delete"><a href="#">Delete</a></td>
+        </tr>
+        <% i++; }) %> <% } else{ %>
+        <tr>
+          <td colspan="9">No Data Found</td>
+        </tr>
+        <% } %>
+        </table>
+        <% } %>
+      </div>
+    </div>
+</main>
 </div>

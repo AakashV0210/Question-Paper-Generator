@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:tailwind": "tailwindcss build ./style.css -o ../client/public/css/style.css"
   },
   "keywords": [],
   "author": "",
@@ -17,13 +18,15 @@
     "express": "^4.18.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
+    "fast-csv": "^4.3.6",
+    "formidable": "^2.0.1",
     "method-override": "^3.0.0",
     "passport": "^0.6.0",
-    "fast-csv": "^4.3.6",
     "passport-local": "^1.0.0",
     "pg": "^8.7.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "tailwindcss": "^3.1.3"
   }
 }

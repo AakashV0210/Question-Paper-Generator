@@ -6,6 +6,9 @@ const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
+// const path = require("path");
+
+
 
 const initializePassport = require("./src/config/passportConfig");
 
@@ -36,6 +39,10 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+
+// app.set('client/views', path.join(__dirname, 'client/views'));
+// app.set('client/partials', path.join(__dirname, 'client/partials'));
 
 app.use(express.static(__dirname.replace("server", "client/public")));
 
@@ -114,6 +121,10 @@ app.get(
 
 app.get("/teacher_page/view-questions-all", checkAuthenticated, (req, res) => {
   view_all_questions(req, res);
+});
+
+app.get("/teacher_page/add-questions", checkAuthenticated, (req, res) => {
+  res.render("teacher_page.ejs", { path: req.url, user: req.user.name });
 });
 
 app.get("*", (req, res) => {

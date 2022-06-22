@@ -4,7 +4,7 @@ const fastcsv = require("fast-csv");
 
 exports.csv_to_db = async (req, res) => {
   let stream = fs.createReadStream(
-    "C:/Users/aakas/Desktop/Question-Paper-Generator/server/assets/question_paper.csv"
+    "C:/Users/Namith/Desktop/Question-Paper-Generator/server/assets/question_paper.csv"
   );
   let csvData = [];
   let csvStream = fastcsv
