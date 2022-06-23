@@ -58,49 +58,69 @@
 
   <% } %> 
   
-  
 
-  <main class="st_viewport">
-    <div class="st_wrap_table" data-table_id="0">
-      <header class="st_table_header">
-        <h3 class="bg-black">ALL QUESTIONS</h3>
-        <% if(locals.userdata){ %>
-        <table border="1" class="table-auto">
-          <tr class="st_row">
-            <th class="st_column _syllabus">syllabus</th>
-            <th class="st_column _semester">semester</th>
-            <th class="st_column _chapter">chapter</th>
-            <th class="st_column _unit">unit</th>
-            <th class="st_column _marks">marks</th>
-            <th class="st_column _priority">priority</th>
-            <th class="st_column _question">question</th>
-            <th class="st_column _edit">edit</th>
-            <th class="st_column _delete">delete</th>
-          </tr>
-      </header>
-      <div class="st_table">
-        <% if(userdata.length!=0){ var i=1; userdata.forEach(function(data){ %>
-        <tr class="st_row">
-          <td class="st_column _syllabus"><%=data.syllabus %></td>
-          <td class="st_column _semester"><%=data.semester %></td>
-          <td class="st_column _chapter"><%=data.chapter %></td>
-          <td class="st_column _unit"><%=data.unit %></td>
-          <td class="st_column _marks"><%=data.marks %></td>
-          <td class="st_column _priority"><%=data.priority %></td>
-          <td class="st_column _question"><%=data.question %></td>
-          <!-- <td><a href="/users/edit/<%=data.id%>">Edit</a></td>
-                <td><a href="/users/delete/<%=data.id%>">Delete</a></td> -->
-          <td class="st_column _edit"><a href="#">Edit</a></td>
-          <td class="st_column _delete"><a href="#">Delete</a></td>
-        </tr>
-        <% i++; }) %> <% } else{ %>
-        <tr>
-          <td colspan="9">No Data Found</td>
-        </tr>
-        <% } %>
-        </table>
-        <% } %>
-      </div>
-    </div>
-</main>
+
+  <% if(locals.userdata){ %>
+    ALL QUESTIONS
+  <table border="1">
+    <tr>
+      <th>syllabus</th>
+      <th>semester</th>
+      <th>chapter</th>
+      <th>unit</th>
+      <th>marks</th>
+      <th>priority</th>
+      <th>question</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+
+    <% if(userdata.length!=0){ var i=1; userdata.forEach(function(data){ %>
+    <tr>
+      <td><%=data.syllabus %></td>
+      <td><%=data.semester %></td>
+      <td><%=data.chapter %></td>
+      <td><%=data.unit %></td>
+      <td><%=data.marks %></td>
+      <td><%=data.priority %></td>
+      <td><%=data.question %></td>
+      <td><a href="/teacher_page/edit-page/<%=data.id%>">Edit</a></td>
+            <td><a href="/teacher_page/delete-entry/<%=data.id%>">Delete</a></td>
+      <!-- <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td> -->
+    </tr>
+    <% i++; }) %> <% } else{ %>
+    <tr>
+      <td colspan="9">No Data Found</td>
+    </tr>
+    <% } %>
+  </table>
+  <% } %>
+
+  <% if(locals.edit_data){ %>
+    <p><%=edit_data.id%></p> 
+
+    <h3>Edit the boxes to be modified</h3>
+    <a id="edit_id" style="display: none;"><%=edit_data.id %></a>
+    <form action="#" id="submit_edit" onsubmit="return validate_question_edit()"  >
+      <label for="edit_syllabus">syllabus</label>
+      <input type="text" id="edit_syllabus" name="edit_syllabus" value="<%=edit_data.syllabus %>"  ><br><br>
+      <label for="edit_semester">semester</label>
+      <input type="number" min="1" max="6"  id="edit_semester" name="edit_semester" value="<%=edit_data.semester%>"   ><br><br>
+      <label for="edit_chapter">chapter</label>
+      <input type="text" id="edit_chapter" name="edit_chapter" value="<%=edit_data.chapter %>"  ><br><br>
+      <label for="edit_unit">unit</label>
+      <input type="number" min="1" max="5" id="edit_unit" name="edit_unit" value="<%=edit_data.unit %>"  ><br><br>
+      <label for="edit_marks">marks</label>
+      <input type="number" min="2" max="6" id="edit_marks" name="edit_marks" value="<%=edit_data.marks %>"  ><br><br>
+      <label for="edit_priority">priority</label>
+      <input type="number" min="1" max="3" id="edit_priority" name="edit_priority" value="<%=edit_data.priority %>"  ><br><br>
+      <label for="edit_question">question</label>
+      <input type="text" id="edit_question" name="edit_question" value="<%=edit_data.question %>"  ><br><br>
+      <input type="submit" >
+    </form>
+    <!-- <a onclick="submit_edit()" id="submit_edit" href="" >ewefsdv</a> -->
+
+
+  <% } %>
 </div>
