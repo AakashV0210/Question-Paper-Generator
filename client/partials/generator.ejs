@@ -32,9 +32,38 @@
 
   <% }else if(path.includes("generate-questions")){%>
   <div id="generated_questions">
-    <% if(locals.generator_data){ %>
+    <% if(locals.generator_mark_2_data){ %>
     <ul>
-      <% var i = 1; generator_data.forEach(function(data){ %>
+      2 MARK QUESTIONS<br>
+      <% var i = 1; generator_mark_2_data.forEach(function(data){ %>
+        
+        <% if(data != undefined){ %>
+          <li><%=i%>. <%= data %></li>
+        <% } else{ %>
+          <li><%=i%>. NO QUESTIONS AVAILABLE</li>
+        <% } %>
+
+      <% i++; }) %>
+    </ul>
+    <br>
+
+    <ul>
+      6 MARK QUESTIONS<br>
+      <% var i = 1; generator_mark_6_data.forEach(function(data){ %>
+        
+        <% if(data != undefined){ %>
+          <li><%=i%>. <%= data %></li>
+        <% } else{ %>
+          <li><%=i%>. NO QUESTIONS AVAILABLE</li>
+        <% } %>
+
+      <% i++; }) %>
+    </ul>
+    <br>
+
+    <ul>
+      10 MARK QUESTIONS <br>
+      <% var i = 1; generator_mark_10_data.forEach(function(data){ %>
         
         <% if(data != undefined){ %>
           <li><%=i%>. <%= data %></li>

@@ -8,7 +8,7 @@ exports.generate_questions = async (req, res) => {
 
     //GENERATING 2 MARK QUESTIONS--------------------------------------------------------------------------------------------------
 
-    let GENERATE_MARK_2_QUESTIONS = [];
+    let GENERATED_MARK_2_QUESTIONS = [];
 
     let total_mark_2_no = 10; //total number of 2 mark questions to be generated
 
@@ -36,7 +36,7 @@ exports.generate_questions = async (req, res) => {
 
     //GENERATING 6 MARK QUESTIONS------------------------------------------------------------------------------------------------
 
-    let GENERATE_MARK_6_QUESTIONS = [];
+    let GENERATED_MARK_6_QUESTIONS = [];
     let total_mark_6_no = 7; //total number of 6 mark questions to be generated
 
     let priority_3_mark_6_no = 2; //number of 6 mark questions with priority 3 to be generated
@@ -405,7 +405,7 @@ exports.generate_questions = async (req, res) => {
 
     console.log("10 mark questons:");
 
-    let GENERATE_MARK_10_QUESTIONS = [];
+    let GENERATED_MARK_10_QUESTIONS = [];
 
     let mark_10_list_arr = [5, 10]; //different marks for generating questions with
 
@@ -521,24 +521,24 @@ exports.generate_questions = async (req, res) => {
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------
-    GENERATE_MARK_2_QUESTIONS =
-      GENERATE_MARK_2_QUESTIONS.concat(generated_mark_2_arr);
+    GENERATED_MARK_2_QUESTIONS =
+      GENERATED_MARK_2_QUESTIONS.concat(generated_mark_2_arr);
 
-    console.log("2 mark questions:", GENERATE_MARK_2_QUESTIONS);
+    console.log("2 mark questions:", GENERATED_MARK_2_QUESTIONS);
 
-    GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+    GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
       generated_priority_3_mark_6_arr
     );
 
-    GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+    GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
       generated_priority_1_mark_6_arr
     );
 
-    GENERATE_MARK_6_QUESTIONS =
-      GENERATE_MARK_6_QUESTIONS.concat(generated_mark_6_arr);
+    GENERATED_MARK_6_QUESTIONS =
+      GENERATED_MARK_6_QUESTIONS.concat(generated_mark_6_arr);
 
     if (generated_mark_4_and_2_arr.length != 0) {
-      GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+      GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
         "(a). " +
           generated_mark_4_and_2_arr[0] +
           "(4M); (b). " +
@@ -548,7 +548,7 @@ exports.generate_questions = async (req, res) => {
     }
 
     if (generated_mark_3_and_3_arr.length != 0) {
-      GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+      GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
         "(a). " +
           generated_mark_3_and_3_arr[0] +
           "(3M); (b). " +
@@ -558,7 +558,7 @@ exports.generate_questions = async (req, res) => {
     }
 
     if (generated_mark_2_and_2_and_2_arr.length != 0) {
-      GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+      GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
         "(a). " +
           generated_mark_2_and_2_and_2_arr[0] +
           "(2M); (b). " +
@@ -569,18 +569,26 @@ exports.generate_questions = async (req, res) => {
       );
     }
 
-    console.log("6 mark questions:", GENERATE_MARK_6_QUESTIONS);
+    console.log("6 mark questions:", GENERATED_MARK_6_QUESTIONS);
 
-    GENERATE_MARK_10_QUESTIONS = GENERATE_MARK_10_QUESTIONS.concat(
+    GENERATED_MARK_10_QUESTIONS = GENERATED_MARK_10_QUESTIONS.concat(
       generated_all_mark_10_arr
     );
 
-    GENERATE_MARK_10_QUESTIONS = GENERATE_MARK_10_QUESTIONS.concat(
+    GENERATED_MARK_10_QUESTIONS = GENERATED_MARK_10_QUESTIONS.concat(
       generated_mark_5_and_5_arr
     );
 
-    console.log("10 mark questions:", GENERATE_MARK_10_QUESTIONS);
+    console.log("10 mark questions:", GENERATED_MARK_10_QUESTIONS);
     //-----------------------------------------------------------------------------------------------------------------------------------
+
+    return res.render("teacher_page.ejs", {
+      user: req.user.name,
+      path: req.url,
+      generator_mark_2_data: GENERATED_MARK_2_QUESTIONS,
+      generator_mark_6_data: GENERATED_MARK_6_QUESTIONS,
+      generator_mark_10_data: GENERATED_MARK_10_QUESTIONS,
+    });
   } catch (err) {
     console.error(err.message);
   }
