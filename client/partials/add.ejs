@@ -1,20 +1,4 @@
 <div id="add" style="display: none">
-  <!-- <div id="upload">
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-      <label for="myfile">Select a file: </label>
-      <input type="file" id="myfile" name="myfile" accept="csv" />
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
-  <li>
-    <form action="/download" method="POST">
-      <a href="../assets/uploads/question_paper1.csv" download>Download File</a>
-    </form>
-  </li> -->
-  <% if(locals.add_data){ %>
-  <p><%= add_data %></p>
-  <% } %>
-
   <form action="#" id="submit_add" onsubmit="return validate_question_add()">
     <label for="add_syllabus">syllabus: </label>
     <input type="text" id="add_syllabus" name="add_syllabus" /><br /><br />

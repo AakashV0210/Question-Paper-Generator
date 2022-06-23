@@ -1,6 +1,9 @@
 function validate_question_edit() {
   const id = document.getElementById("edit_id").textContent;
-  const syllabus = document.getElementById("edit_syllabus").value.trim();
+  const syllabus = document
+    .getElementById("edit_syllabus")
+    .value.trim()
+    .replaceAll(" ", "");
   const semester = document.getElementById("edit_semester").value.trim();
   const chapter = document.getElementById("edit_chapter").value.trim();
   const unit = document.getElementById("edit_unit").value.trim();
@@ -25,7 +28,10 @@ function validate_question_edit() {
 
 function submit_edit() {
   const id = document.getElementById("edit_id").textContent;
-  const syllabus = document.getElementById("edit_syllabus").value.trim();
+  const syllabus = document
+    .getElementById("edit_syllabus")
+    .value.trim()
+    .replaceAll(" ", "");
   const semester = document.getElementById("edit_semester").value.trim();
   const chapter = document.getElementById("edit_chapter").value.trim();
   const unit = document.getElementById("edit_unit").value.trim();

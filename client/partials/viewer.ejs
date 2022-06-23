@@ -1,5 +1,8 @@
 <div id="viewer" style="display: none">
+
   <% if(path.includes("view-questions-all")) { %>
+
+  <!-- Selecting the filter  -->
   <div id = "filter">
     SELECT FILTER<br><br>
     <input type="radio" id="syllabus_filter" name="filter" onclick="select_syllabus()" value="syllabus"></input>
@@ -8,55 +11,63 @@
     <label for="semester_filter">Semester</label><br>
     <input type="radio" id="chapter_filter" name="filter" onclick="display_search_box()" value="chapter" ></input>
     <label for="chapter_filter">Chapter</label><br>
-    <input type="radio" id="question_filter" name="filter" onclick="display_search_box()" value="questions"></input>
+    <input type="radio" id="question_filter" name="filter" onclick="display_search_box()" value="question"></input>
     <label for="question_filter">Questions</label><br>
   </div>
 
   <br>
 
+  <!-- Syllabus radiobuttons -->
   <div id="syllabus" style="display:none ;">
     SELECT SYLLABUS<br><br>
-    <input type="radio" id="ugc2015" name="syllabus" onclick="display_filter_button()"value="ugc 2015"></input>
-    <label for="ugc2015">UGC 2015</label><br>
-    <input type="radio" id="ugc2018" name="syllabus" onclick="display_filter_button()" value="ugc 2018"></input>
-    <label for="ugc2018">UGC 2018</label><br>
+    <form action="#" id="syllabus_form"  onsubmit="return validate_syllabus_and_semester()">
+      <input type="radio" id="ugc2015" name="syllabus" value="ugc2015"></input>
+      <label for="ugc2015">UGC 2015</label><br>
+      <input type="radio" id="ugc2018" name="syllabus" value="ugc2018"></input>
+      <label for="ugc2018">UGC 2018</label><br>
+      <input type="submit" value="Search">
+    </form>
+
   </div>
 
   <br>
 
+  <!-- Semester radiobuttons -->
   <div id="semester" style="display:none ;">
     SELECT SEMESTER<br><br>
-    <input type="radio" id="sem_1" name="semester" onclick="display_filter_button()" value = "1"></input>
-    <label for="sem_1">1</label><br>
-    <input type="radio" id="sem_2" name="semester" onclick="display_filter_button()" value = "2"></input>
-    <label for="sem_2">2</label><br>
-    <input type="radio" id="sem_3" name="semester" onclick="display_filter_button()" value = "3"></input>
-    <label for="sem_3">3</label><br>
-    <input type="radio" id="sem_4" name="semester" onclick="display_filter_button()"value = "4"></input>
-    <label for="sem_4">4</label><br>
-    <input type="radio" id="sem_5" name="semester" onclick="display_filter_button()"value = "5"></input>
-    <label for="sem_5">5</label><br>
-    <input type="radio" id="sem_6" name="semester" onclick="display_filter_button()"value = "6"></input>
-    <label for="sem_6">6</label><br>
+    <form action="#" id="semester_form"  onsubmit="return validate_syllabus_and_semester()">
+      <input type="radio" id="sem_1" name="semester"  value = "1"></input>
+      <label for="sem_1">1</label><br>
+      <input type="radio" id="sem_2" name="semester"  value = "2"></input>
+      <label for="sem_2">2</label><br>
+      <input type="radio" id="sem_3" name="semester"  value = "3"></input>
+      <label for="sem_3">3</label><br>
+      <input type="radio" id="sem_4" name="semester" value = "4"></input>
+      <label for="sem_4">4</label><br>
+      <input type="radio" id="sem_5" name="semester" value = "5"></input>
+      <label for="sem_5">5</label><br>
+      <input type="radio" id="sem_6" name="semester" value = "6"></input>
+      <label for="sem_6">6</label><br>
+      <input type="submit" value="Search">
+    </form>
+    
   </div>
 
+  <!-- Search box for entering chapter and question  -->
   <div id="search_box" style="display: none;">
-    <!-- TYPE CHAPTER NAME  -->
 
-    <label for="filter_input">Search Entry:</label>
-    <input type="text" id="filter_input" name="filter_input" oninput="search_item()"><br><br>
-    <a onclick="search_item()" id="search_item" href="" ></a>
+    <form action="#" id="search_form" onsubmit="return validate_chapter_and_question()">
+      <label for="search_input">Search Entry:</label>
+      <input type="text" id="search_input" name="search_input" >
+      <input type="submit" value="Search">
+    </form>
+    <br><br>
 
-  </div>
-
-  <div id="filter_button" style="display:none ;">
-    <a href="#" id="filtered_questions">kjclasbl</a>
   </div>
 
   <% } %> 
   
-
-
+  <!-- Printing the tables -->
   <% if(locals.userdata){ %>
     ALL QUESTIONS
   <table border="1">
@@ -82,9 +93,7 @@
       <td><%=data.priority %></td>
       <td><%=data.question %></td>
       <td><a href="/teacher_page/edit-page/<%=data.id%>">Edit</a></td>
-            <td><a href="/teacher_page/delete-entry/<%=data.id%>">Delete</a></td>
-      <!-- <td><a href="#">Edit</a></td>
-      <td><a href="#">Delete</a></td> -->
+      <td><a href="/teacher_page/delete-entry/<%=data.id%>">Delete</a></td>
     </tr>
     <% i++; }) %> <% } else{ %>
     <tr>
@@ -94,6 +103,7 @@
   </table>
   <% } %>
 
+  <!-- Edit data  -->
   <% if(locals.edit_data){ %>
     <p><%=edit_data.id%></p> 
 
@@ -116,8 +126,8 @@
       <input type="text" id="edit_question" name="edit_question" value="<%=edit_data.question %>"  ><br><br>
       <input type="submit" >
     </form>
-    <!-- <a onclick="submit_edit()" id="submit_edit" href="" >ewefsdv</a> -->
+    <br><br>
 
-
+    <a href="/teacher_page/view-questions-all">BACK</a>
   <% } %>
 </div>
