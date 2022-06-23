@@ -8,7 +8,7 @@ exports.generate_questions = async (req, res) => {
 
     //GENERATING 2 MARK QUESTIONS--------------------------------------------------------------------------------------------------
 
-    let GENERATE_MARK_2_QUESTIONS = [];
+    let GENERATED_MARK_2_QUESTIONS = [];
 
     let total_mark_2_no = 10; //total number of 2 mark questions to be generated
 
@@ -36,7 +36,7 @@ exports.generate_questions = async (req, res) => {
 
     //GENERATING 6 MARK QUESTIONS------------------------------------------------------------------------------------------------
 
-    let GENERATE_MARK_6_QUESTIONS = [];
+    let GENERATED_MARK_6_QUESTIONS = [];
     let total_mark_6_no = 7; //total number of 6 mark questions to be generated
 
     let priority_3_mark_6_no = 2; //number of 6 mark questions with priority 3 to be generated
@@ -405,7 +405,7 @@ exports.generate_questions = async (req, res) => {
 
     console.log("10 mark questons:");
 
-    let GENERATE_MARK_10_QUESTIONS = [];
+    let GENERATED_MARK_10_QUESTIONS = [];
 
     let mark_10_list_arr = [5, 10]; //different marks for generating questions with
 
@@ -520,111 +520,25 @@ exports.generate_questions = async (req, res) => {
       }
     }
 
-    //OLD CODE---------------------------------------------------------------------------------------------------------------------
-    // const priority_3_questions = await pool.query(
-    //   "SELECT question FROM question_paper WHERE priority = 3 AND LOWER(syllabus) = $1 AND semester = $2",
-    //   // "SELECT question FROM question_paper WHERE priority = 3"
-    //   [syllabus, semester]
-    // );
-    // let priority_3_arr = [];
-    // let generated_questions_arr = [];
-    // for (let i = 0; i < priority_3_questions.rows.length; i++) {
-    //   priority_3_arr = priority_3_arr.concat(
-    //     Object.values(priority_3_questions.rows[i])
-    //   );
-    // }
-
-    // for (let i = 0; i < 1; i++) {
-    //   let index = Math.floor(Math.random() * priority_3_arr.length);
-    //   generated_questions_arr = generated_questions_arr.concat(
-    //     priority_3_arr[index]
-    //   );
-    //   priority_3_arr.splice(index, 1);
-    // }
-
-    // //GETTING QUESTIONS WITH PRIORITY 2
-
-    // const priority_2_questions = await pool.query(
-    //   "SELECT question FROM question_paper WHERE priority = 2 AND LOWER(syllabus) = $1 AND semester = $2",
-    //   // "SELECT question FROM question_paper WHERE priority = 2"
-    //   [syllabus, semester]
-    // );
-    // let priority_2_arr = [];
-    // for (let i = 0; i < priority_2_questions.rows.length; i++) {
-    //   priority_2_arr = priority_2_arr.concat(
-    //     Object.values(priority_2_questions.rows[i])
-    //   );
-    //   priority_2_arr = priority_2_arr.concat(
-    //     Object.values(priority_2_questions.rows[i])
-    //   );
-    // }
-
-    // //GETTING QUESTIONS WITH PRIORITY 1
-
-    // const priority_1_questions = await pool.query(
-    //   "SELECT question FROM question_paper WHERE priority = 1 AND LOWER(syllabus) = $1 AND semester = $2",
-    //   // "SELECT question FROM question_paper WHERE priority = 1"
-    //   [syllabus, semester]
-    // );
-    // let priority_1_arr = [];
-    // for (let i = 0; i < priority_1_questions.rows.length; i++) {
-    //   priority_1_arr = priority_1_arr.concat(
-    //     Object.values(priority_1_questions.rows[i])
-    //   );
-    // }
-
-    // priority_1_arr = priority_1_arr.concat(priority_2_arr); //MERGING PRIORITY 1 AND PRIORITY 2 QUESTIONS ARRAY TO RANDOMIZE QUESTIONS FROM THEM
-
-    // for (let i = 0; i < 2; i++) {
-    //   let index = Math.floor(Math.random() * priority_1_arr.length);
-
-    //   generated_questions_arr = generated_questions_arr.concat(
-    //     priority_1_arr[index]
-    //   );
-    //   if (priority_1_arr[index] == priority_1_arr[index - 1]) {
-    //     priority_1_arr.splice(index - 1, 1);
-    //     priority_1_arr.splice(index - 1, 1);
-    //     console.log(priority_1_arr);
-    //   } else if (priority_1_arr[index] == priority_1_arr[index + 1]) {
-    //     priority_1_arr.splice(index, 1);
-    //     priority_1_arr.splice(index, 1);
-    //     console.log(priority_1_arr);
-    //   } else {
-    //     priority_1_arr.splice(index, 1);
-    //     console.log(priority_1_arr);
-    //   }
-    // }
-    // let GENERATED_QUESTIONS = {};
-    // for (let i = 0; i < generated_questions_arr.length; i++) {
-    //   GENERATED_QUESTIONS[i + 1] = generated_questions_arr[i];
-    // }
-    // console.log(Object.values(GENERATED_QUESTIONS));
-    // // return res.json(GENERATED_QUESTIONS);
-    // return res.render("teacher_page.ejs", {
-    //   user: req.user.name,
-    //   path: req.url,
-    //   generator_data: Object.values(GENERATED_QUESTIONS),
-    // });
-
     //--------------------------------------------------------------------------------------------------------------------------------
-    GENERATE_MARK_2_QUESTIONS =
-      GENERATE_MARK_2_QUESTIONS.concat(generated_mark_2_arr);
+    GENERATED_MARK_2_QUESTIONS =
+      GENERATED_MARK_2_QUESTIONS.concat(generated_mark_2_arr);
 
-    console.log("2 mark questions:", GENERATE_MARK_2_QUESTIONS);
+    console.log("2 mark questions:", GENERATED_MARK_2_QUESTIONS);
 
-    GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+    GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
       generated_priority_3_mark_6_arr
     );
 
-    GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+    GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
       generated_priority_1_mark_6_arr
     );
 
-    GENERATE_MARK_6_QUESTIONS =
-      GENERATE_MARK_6_QUESTIONS.concat(generated_mark_6_arr);
+    GENERATED_MARK_6_QUESTIONS =
+      GENERATED_MARK_6_QUESTIONS.concat(generated_mark_6_arr);
 
     if (generated_mark_4_and_2_arr.length != 0) {
-      GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+      GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
         "(a). " +
           generated_mark_4_and_2_arr[0] +
           "(4M); (b). " +
@@ -634,7 +548,7 @@ exports.generate_questions = async (req, res) => {
     }
 
     if (generated_mark_3_and_3_arr.length != 0) {
-      GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+      GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
         "(a). " +
           generated_mark_3_and_3_arr[0] +
           "(3M); (b). " +
@@ -644,7 +558,7 @@ exports.generate_questions = async (req, res) => {
     }
 
     if (generated_mark_2_and_2_and_2_arr.length != 0) {
-      GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
+      GENERATED_MARK_6_QUESTIONS = GENERATED_MARK_6_QUESTIONS.concat(
         "(a). " +
           generated_mark_2_and_2_and_2_arr[0] +
           "(2M); (b). " +
@@ -655,22 +569,26 @@ exports.generate_questions = async (req, res) => {
       );
     }
 
-    GENERATE_MARK_6_QUESTIONS = GENERATE_MARK_6_QUESTIONS.concat(
-      generated_mark_2_and_2_and_2_arr
-    );
+    console.log("6 mark questions:", GENERATED_MARK_6_QUESTIONS);
 
-    console.log("6 mark questions:", GENERATE_MARK_6_QUESTIONS);
-
-    GENERATE_MARK_10_QUESTIONS = GENERATE_MARK_10_QUESTIONS.concat(
+    GENERATED_MARK_10_QUESTIONS = GENERATED_MARK_10_QUESTIONS.concat(
       generated_all_mark_10_arr
     );
 
-    GENERATE_MARK_10_QUESTIONS = GENERATE_MARK_10_QUESTIONS.concat(
+    GENERATED_MARK_10_QUESTIONS = GENERATED_MARK_10_QUESTIONS.concat(
       generated_mark_5_and_5_arr
     );
 
-    console.log("10 mark questions:", GENERATE_MARK_10_QUESTIONS);
+    console.log("10 mark questions:", GENERATED_MARK_10_QUESTIONS);
     //-----------------------------------------------------------------------------------------------------------------------------------
+
+    return res.render("teacher_page.ejs", {
+      user: req.user.name,
+      path: req.url,
+      generator_mark_2_data: GENERATED_MARK_2_QUESTIONS,
+      generator_mark_6_data: GENERATED_MARK_6_QUESTIONS,
+      generator_mark_10_data: GENERATED_MARK_10_QUESTIONS,
+    });
   } catch (err) {
     console.error(err.message);
   }
