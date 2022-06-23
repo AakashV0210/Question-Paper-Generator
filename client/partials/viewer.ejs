@@ -98,7 +98,7 @@
     <p><%=edit_data.id%></p> 
 
     <h3>Edit the boxes to be modified</h3>
-    <a id="edit_id" style="display: none;"><%=edit_data.id %></a>
+    <a id="edit_id" style="display: none;"><%=edit_data.id %></a>  <!-- Dummy tag to hold id value(not visible on screen)-->
     <form action="#" id="submit_edit" onsubmit="return validate_question_edit()"  >
       <label for="edit_syllabus">syllabus</label>
       <input type="text" id="edit_syllabus" name="edit_syllabus" value="<%=edit_data.syllabus %>"  ><br><br>
