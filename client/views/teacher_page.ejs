@@ -11,7 +11,7 @@
     <script type="text/javascript" src="/scripts/view_questions.js"></script>
     <script type="text/javascript" src="/scripts/edit_questions.js"></script>
     <script type="text/javascript" src="/scripts/generate_questions.js"></script>
-
+    <script type="text/javascript" src="/scripts/add_questions.js"></script>
 
   </head>
  
@@ -19,7 +19,7 @@
     <body onload="toggleText1()">
   <% } else if((path.includes("generate-question-view")) || (path.includes("generate-questions"))){ %>
     <body onload = "toggleText2()">
-  <% } else if(path.includes("add-questions")){ %>
+  <% } else if(path.includes("add-page")){ %>
     <body onload = "toggleText3()">
   <% } else { %>
     <body> 

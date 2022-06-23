@@ -32,19 +32,9 @@ function submit_edit() {
   const marks = document.getElementById("edit_marks").value.trim();
   const priority = document.getElementById("edit_priority").value.trim();
   const question = document.getElementById("edit_question").value.trim();
-  // if (
-  //   syllabus === "" ||
-  //   semester === "" ||
-  //   chapter === "" ||
-  //   unit === "" ||
-  //   marks === "" ||
-  //   priority === "" ||
-  //   question === ""
-  // ) {
-  //   alert("Cannot have empty fields");
-  // } else {
+
   path =
-    "/teacher_page/edit-page/" +
+    "/teacher_page/edit-entry/" +
     id +
     "/" +
     syllabus +
@@ -62,5 +52,4 @@ function submit_edit() {
     question;
 
   document.getElementById("submit_edit").setAttribute("action", path);
-  // }
 }

@@ -23,6 +23,7 @@ const {
 const { view_all_questions } = require("./src/routes_function/view_questions");
 const { edit_page, edit_entry } = require("./src/routes_function/edit_entry");
 const { delete_entry } = require("./src/routes_function/delete_entry");
+const { add_entry } = require("./src/routes_function/add_entry");
 
 initializePassport(passport);
 
@@ -124,7 +125,7 @@ app.get("/teacher_page/edit-page/:id", checkAuthenticated, (req, res) => {
 });
 
 app.get(
-  "/teacher_page/edit-page/:id/:syllabus/:semester/:chapter/:unit/:marks/:priority/:question",
+  "/teacher_page/edit-entry/:id/:syllabus/:semester/:chapter/:unit/:marks/:priority/:question",
   checkAuthenticated,
   (req, res) => {
     edit_entry(req, res);
@@ -135,9 +136,17 @@ app.get("/teacher_page/delete-entry/:id", checkAuthenticated, (req, res) => {
   delete_entry(req, res);
 });
 
-app.get("/teacher_page/add-questions", checkAuthenticated, (req, res) => {
+app.get("/teacher_page/add-page", checkAuthenticated, (req, res) => {
   res.render("teacher_page.ejs", { user: req.user.name, path: req.url });
 });
+
+app.get(
+  "/teacher_page/add-entry/:syllabus/:semester/:chapter/:unit/:marks/:priority/:question",
+  checkAuthenticated,
+  (req, res) => {
+    add_entry(req, res);
+  }
+);
 
 app.get("*", (req, res) => {
   res.send("Sorry, this is an invalid URL.");
