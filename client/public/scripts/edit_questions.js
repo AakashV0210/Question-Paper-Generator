@@ -21,6 +21,9 @@ function validate_question_edit() {
   ) {
     alert("Cannot have empty fields");
     return false;
+  } else if (marks == 7 || marks == 8 || marks == 9) {
+    alert("You can only enter 2, 3, 4, 5, 6 and 10 mark questions");
+    return false;
   } else {
     submit_edit();
   }
