@@ -2,6 +2,10 @@ const pool = require("../config/dbConfig");
 
 exports.generate_questions = async (req, res) => {
   try {
+    const current_url = req.url;
+    const page_name = current_url.split("/");
+    const page_file = page_name[1] + ".ejs";
+
     const { semester } = req.params;
     const { syllabus } = req.params;
     const no_of_questions = 7;
@@ -582,13 +586,22 @@ exports.generate_questions = async (req, res) => {
     console.log("10 mark questions:", GENERATED_MARK_10_QUESTIONS);
     //-----------------------------------------------------------------------------------------------------------------------------------
 
-    return res.render("teacher_page.ejs", {
-      user: req.user.name,
-      path: req.url,
-      generator_mark_2_data: GENERATED_MARK_2_QUESTIONS,
-      generator_mark_6_data: GENERATED_MARK_6_QUESTIONS,
-      generator_mark_10_data: GENERATED_MARK_10_QUESTIONS,
-    });
+    if (page_file.includes("teacher_page")) {
+      return res.render(page_file, {
+        user: req.user.name,
+        path: req.url,
+        generator_mark_2_data: GENERATED_MARK_2_QUESTIONS,
+        generator_mark_6_data: GENERATED_MARK_6_QUESTIONS,
+        generator_mark_10_data: GENERATED_MARK_10_QUESTIONS,
+      });
+    } else if (page_file.includes("student_page")) {
+      return res.render(page_file, {
+        path: req.url,
+        generator_mark_2_data: GENERATED_MARK_2_QUESTIONS,
+        generator_mark_6_data: GENERATED_MARK_6_QUESTIONS,
+        generator_mark_10_data: GENERATED_MARK_10_QUESTIONS,
+      });
+    }
   } catch (err) {
     console.error(err.message);
   }

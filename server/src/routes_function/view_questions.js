@@ -4,16 +4,31 @@ exports.view_all_questions = async (req, res) => {
   try {
     const { filter } = req.params;
     const { filter_value } = req.params;
+
+    //Getting the name of the html file to be rendered
+    const current_url = req.url;
+    const page_name = current_url.split("/");
+    const page_file = page_name[1] + ".ejs";
+    // console.log(page_file);
+
     if (filter == undefined) {
       await pool.query(
         "SELECT * FROM question_paper",
         function (err, data, fields) {
-          if (err) throw err;
-          return res.render("teacher_page.ejs", {
-            path: req.url,
-            userdata: data.rows,
-            user: req.user.name,
-          });
+          if (page_file.includes("teacher_page")) {
+            if (err) throw err;
+            return res.render(page_file, {
+              path: req.url,
+              userdata: data.rows,
+              user: req.user.name,
+            });
+          } else if (page_file.includes("student_page")) {
+            if (err) throw err;
+            return res.render(page_file, {
+              path: req.url,
+              userdata: data.rows,
+            });
+          }
         }
       );
     } else {
@@ -22,12 +37,20 @@ exports.view_all_questions = async (req, res) => {
           "SELECT * FROM question_paper WHERE LOWER(syllabus) = $1",
           [filter_value.toLowerCase()],
           function (err, data, fields) {
-            if (err) throw err;
-            return res.render("teacher_page.ejs", {
-              path: req.url,
-              userdata: data.rows,
-              user: req.user.name,
-            });
+            if (page_file.includes("teacher_page")) {
+              if (err) throw err;
+              return res.render(page_file, {
+                path: req.url,
+                userdata: data.rows,
+                user: req.user.name,
+              });
+            } else if (page_file.includes("student_page")) {
+              if (err) throw err;
+              return res.render(page_file, {
+                path: req.url,
+                userdata: data.rows,
+              });
+            }
           }
         );
       } else if (filter.toLowerCase() === "semester") {
@@ -35,12 +58,20 @@ exports.view_all_questions = async (req, res) => {
           "SELECT * FROM question_paper WHERE semester = $1",
           [filter_value],
           function (err, data, fields) {
-            if (err) throw err;
-            return res.render("teacher_page.ejs", {
-              path: req.url,
-              userdata: data.rows,
-              user: req.user.name,
-            });
+            if (page_file.includes("teacher_page")) {
+              if (err) throw err;
+              return res.render(page_file, {
+                path: req.url,
+                userdata: data.rows,
+                user: req.user.name,
+              });
+            } else if (page_file.includes("student_page")) {
+              if (err) throw err;
+              return res.render(page_file, {
+                path: req.url,
+                userdata: data.rows,
+              });
+            }
           }
         );
       } else if (filter.toLowerCase() === "chapter") {
@@ -48,13 +79,20 @@ exports.view_all_questions = async (req, res) => {
           "SELECT * FROM question_paper WHERE LOWER(chapter) LIKE $1",
           [filter_value.toLowerCase() + "%"],
           function (err, data, fields) {
-            if (err) throw err;
-            console.log(data.rows);
-            return res.render("teacher_page.ejs", {
-              path: req.url,
-              userdata: data.rows,
-              user: req.user.name,
-            });
+            if (page_file.includes("teacher_page")) {
+              if (err) throw err;
+              return res.render(page_file, {
+                path: req.url,
+                userdata: data.rows,
+                user: req.user.name,
+              });
+            } else if (page_file.includes("student_page")) {
+              if (err) throw err;
+              return res.render(page_file, {
+                path: req.url,
+                userdata: data.rows,
+              });
+            }
           }
         );
       } else if (filter.toLowerCase() === "question") {
@@ -62,12 +100,20 @@ exports.view_all_questions = async (req, res) => {
           "SELECT * FROM question_paper WHERE LOWER(question) LIKE $1",
           [filter_value.toLowerCase() + "%"],
           function (err, data, fields) {
-            if (err) throw err;
-            return res.render("teacher_page.ejs", {
-              path: req.url,
-              userdata: data.rows,
-              user: req.user.name,
-            });
+            if (page_file.includes("teacher_page")) {
+              if (err) throw err;
+              return res.render(page_file, {
+                path: req.url,
+                userdata: data.rows,
+                user: req.user.name,
+              });
+            } else if (page_file.includes("student_page")) {
+              if (err) throw err;
+              return res.render(page_file, {
+                path: req.url,
+                userdata: data.rows,
+              });
+            }
           }
         );
       } else {
