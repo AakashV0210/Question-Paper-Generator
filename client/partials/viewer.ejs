@@ -10,13 +10,13 @@
   <div id = "filter" class="flex">
     <div class="flex items-start mr-4">
       <input type="radio" id="syllabus_filter" name="filter" onclick="select_syllabus()" value="syllabus" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-      <label for="syllabus_filter" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">Syllabus</label><br>
+      <label for="syllabus_filter" class="mr-8 text-sm font-medium text-gray-900 ">Syllabus</label><br>
       <input type="radio" id="semester_filter" name="filter" onclick="select_semester()" value="semester"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-      <label for="semester_filter" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">Semester</label><br>
+      <label for="semester_filter" class="mr-8 text-sm font-medium text-gray-900 ">Semester</label><br>
       <input type="radio" id="chapter_filter" name="filter" onclick="display_search_box()" value="chapter"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" >
-      <label for="chapter_filter" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">Chapter</label><br>
+      <label for="chapter_filter" class="mr-8 text-sm font-medium text-gray-900 ">Chapter</label><br>
       <input type="radio" id="question_filter" name="filter" onclick="display_search_box()" value="question"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-      <label for="question_filter" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">Questions</label><br>
+      <label for="question_filter" class="mr-8 text-sm font-medium text-gray-900 ">Questions</label><br>
     </div>
   </div>
 
@@ -27,9 +27,9 @@
     SELECT SYLLABUS<br><br>
     <form action="#" id="syllabus_form"  onsubmit="return validate_syllabus_and_semester()">
       <input type="radio" id="ugc2015" name="syllabus" value="ugc2015" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
-      <label for="ugc2015" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">UGC 2015</label><br>
+      <label for="ugc2015" class="mr-8 text-sm font-medium text-gray-900  ">UGC 2015</label><br>
       <input type="radio" id="ugc2018" name="syllabus" value="ugc2018" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
-      <label for="ugc2018" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">UGC 2018</label><br><br><br>
+      <label for="ugc2018" class="mr-8 text-sm font-medium text-gray-900  ">UGC 2018</label><br><br><br>
       <button class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer">
         <input type="submit" value="Search">
       </button>
@@ -44,17 +44,17 @@
     SELECT SEMESTER<br><br>
     <form action="#" id="semester_form"  onsubmit="return validate_syllabus_and_semester()">
       <input type="radio" id="sem_1" name="semester"  value = "1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
-      <label for="sem_1" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">1</label><br>
+      <label for="sem_1" class="mr-8 text-sm font-medium text-gray-900  ">1</label><br>
       <input type="radio" id="sem_2" name="semester"  value = "2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
-      <label for="sem_2" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">2</label><br>
+      <label for="sem_2" class="mr-8 text-sm font-medium text-gray-900  ">2</label><br>
       <input type="radio" id="sem_3" name="semester"  value = "3" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
-      <label for="sem_3" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">3</label><br>
+      <label for="sem_3" class="mr-8 text-sm font-medium text-gray-900  ">3</label><br>
       <input type="radio" id="sem_4" name="semester" value = "4" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
-      <label for="sem_4" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">4</label><br>
+      <label for="sem_4" class="mr-8 text-sm font-medium text-gray-900  ">4</label><br>
       <input type="radio" id="sem_5" name="semester" value = "5" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
-      <label for="sem_5" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">5</label><br>
+      <label for="sem_5" class="mr-8 text-sm font-medium text-gray-900  ">5</label><br>
       <input type="radio" id="sem_6" name="semester" value = "6" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
-      <label for="sem_6" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">6</label><br>
+      <label for="sem_6" class="mr-8 text-sm font-medium text-gray-900  ">6</label><br>
       <br>
       <button class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer">
       <input type="submit" value="Search">
