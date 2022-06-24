@@ -43,8 +43,16 @@ function validate_question_generate() {
 }
 
 function display_generated_questions() {
+  const url = window.location.pathname;
+  // console.log(url);
+  const page_name = url.split("/");
+  // console.log(page_name);
+  // console.log(page_name[1]);
+
   const path =
-    "/teacher_page/generate-questions/" +
+    "/" +
+    page_name[1] +
+    "/generate-questions/" +
     generator_syllabus_value +
     "/" +
     generator_semester_value;

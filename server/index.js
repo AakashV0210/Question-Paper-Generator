@@ -57,6 +57,8 @@ app.get("/", (req, res) => {
   res.render("index.ejs", { path: req.url });
 });
 
+//----------------TEACHER PAGE ROUTES------------------------------------------------------------
+
 app.get("/users/teacher_login", checkNotAuthenticated, (req, res) => {
   res.render("teacher_login.ejs", { path: req.url });
 });
@@ -154,6 +156,31 @@ app.get(
     add_entry(req, res);
   }
 );
+
+//--------------------STUDENT PAGE ROUTES-----------------------------------------------------------
+
+app.get("/student_page", (req, res) => {
+  // console.log(req.isAuthenticated());
+  res.render("student_page.ejs", { path: req.url });
+});
+
+app.get("/student_page/generate-questions/:syllabus/:semester", (req, res) => {
+  generate_questions(req, res);
+});
+
+app.get("/student_page/generate-question-view", (req, res) => {
+  res.render("student_page.ejs", { path: req.url });
+});
+
+app.get("/student_page/view-questions/:filter/:filter_value", (req, res) => {
+  view_all_questions(req, res);
+});
+
+app.get("/student_page/view-questions-all", (req, res) => {
+  view_all_questions(req, res);
+});
+
+//-------------------------------------------------------------------------------------------------
 
 app.get("*", (req, res) => {
   res.send("Sorry, this is an invalid URL.");
