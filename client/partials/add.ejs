@@ -1,7 +1,7 @@
 <div id="add" style="display: none">
   <form action="#" id="submit_add" onsubmit="return validate_question_add()">
     <label for="add_syllabus">syllabus: </label>
-    <input type="text" id="add_syllabus" name="add_syllabus" /><br /><br />
+    <input type="text" id="add_syllabus" name="add_syllabus" class="border-2 border-gray-400  " /><br /><br />
     <label for="add_semester">semester: </label>
     <input
       type="number"
@@ -9,9 +9,10 @@
       max="6"
       id="add_semester"
       name="add_semester"
+      class="border-2 border-gray-400  "
     /><br /><br />
     <label for="add_chapter">chapter: </label>
-    <input type="text" id="add_chapter" name="add_chapter" /><br /><br />
+    <input type="text" id="add_chapter" name="add_chapter" class="border-2 border-gray-400  " /><br /><br />
     <label for="add_unit">unit: </label>
     <input
       type="number"
@@ -19,6 +20,7 @@
       max="5"
       id="add_unit"
       name="add_unit"
+      class="border-2 border-gray-400  "
     /><br /><br />
     <label for="add_marks">marks: </label>
     <input
@@ -27,6 +29,7 @@
       max="10"
       id="add_marks"
       name="add_marks"
+      class="border-2 border-gray-400  "
     /><br /><br />
     <label for="add_priority">priority: </label>
     <input
@@ -35,9 +38,12 @@
       max="3"
       id="add_priority"
       name="add_priority"
+      class="border-2 border-gray-400  "
     /><br /><br />
     <label for="add_question">question: </label>
-    <input type="text" id="add_question" name="add_question" /><br /><br />
-    <input type="submit" value="Submit" />
+    <input type="text" id="add_question" name="add_question" class="border-2 border-gray-400 "/><br /><br />
+    <button>
+    <input type="submit" value="Submit" class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer"/>
+    </button>
   </form>
 </div>

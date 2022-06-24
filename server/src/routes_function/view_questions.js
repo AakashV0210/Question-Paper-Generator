@@ -76,7 +76,7 @@ exports.view_all_questions = async (req, res) => {
       } else if (filter.toLowerCase() === "chapter") {
         await pool.query(
           "SELECT * FROM question_paper WHERE LOWER(chapter) LIKE $1",
-          [filter_value.toLowerCase() + "%"],
+          ["%" + filter_value.toLowerCase() + "%"],
           function (err, data, fields) {
             if (page_file.includes("teacher_page")) {
               if (err) throw err;
@@ -97,7 +97,7 @@ exports.view_all_questions = async (req, res) => {
       } else if (filter.toLowerCase() === "question") {
         await pool.query(
           "SELECT * FROM question_paper WHERE LOWER(question) LIKE $1",
-          [filter_value.toLowerCase() + "%"],
+          ["%" + filter_value.toLowerCase() + "%"],
           function (err, data, fields) {
             if (page_file.includes("teacher_page")) {
               if (err) throw err;
