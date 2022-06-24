@@ -4,18 +4,346 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../public/css/style.css">
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* body {
+          font-family: 'Poppins';font-size: 22px;
+      } */
+
+      
+      
+    </style>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="/css/index.css" />
+
+
+    <title>QUESTION PAPER GENERATOR</title>
   </head>
 
-  <h1 class="divide-amber-500">HELLO</h1>
   <body>
     <% if (typeof message !== 'undefined' ) { %>
     <p><%= message %></p>
     <% } %>
 
-    <a href="/users/teacher_login">Login</a>
+    <!-- <a href="/users/teacher_login">Login</a> -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="container flex items-center py-4 mt-4 sm:mt-12">
+        <!-- <div class="py-1"><img src="/assets/logo-bookmark.svg" alt="" /></div> -->
+        <ul class="hidden sm:flex flex-1 justify-end items-center gap-12 text-blue-400 uppercase text-xs">
+          <!-- <li class="cursor-pointer">Features</li>
+          <li class="cursor-pointer">Pricing</li>
+          <li class="cursor-pointer">Contact</li> -->
+          <button type="button" class="bg-red-500 text-white rounded-md px-7 py-3 uppercase"><a href="/users/teacher_login">Teacher Login</a></button>
+        </ul>
+        <div class="flex sm:hidden flex-1 justify-end">
+          <i class="text-2xl fas fa-bars"></i>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative">
+      <div class="container flex flex-col-reverse lg:flex-row items-center gap-12 mt-14 lg:mt-28">
+        <!-- Content -->
+        <div class="flex flex-1 flex-col items-center lg:items-start pl-20">
+          <h2 class="text-blue-400 text-3xl md:text-4 lg:text-5xl text-center lg:text-left mb-6">
+            QUESTION PAPER GENERATOR
+          </h2>
+          <p class="text-gray-500 text-lg text-center lg:text-left mb-6">
+            An efficient question paper generation website based on your latest syllabus to help students ace exams. Try it now.
+          </p>
+          <div class="flex justify-center flex-wrap gap-6">
+            <button type="button" class="shadow-md py-3 px-6 rounded-md transition duration-300 bg-purple-700 text-white hover:bg-white hover:text-black">
+              <a href="/users/teacher_register">
+              Teacher Sign-Up
+              </a>
+            </button>
+            <button type="button" class="shadow-md py-3 px-6 rounded-md transition duration-300 bg-slate-200 hover:bg-purple-700 hover:text-white">
+              <a href="/student_page">
+              Student access
+              </a>
+            </button>
+          </div>
+        </div>
+        <!-- Image -->
+        <div class="flex justify-center flex-1 mb-10 md:mb-16 lg:mb-0 z-10">
+          <img class="w-5/6 h-5/6 sm:w-3/4 sm:h-3/4 md:w-full md:h-full" src="/assets/hero-bg.png" alt="" />
+        </div>
+      </div>
+      <!-- Rounded Rectangle -->
+      <div
+        class="
+          hidden
+          md:block
+          overflow-hidden
+          bg-purple-700
+          rounded-l-full
+          absolute
+          h-80
+          w-2/4
+          top-32
+          right-0
+          lg:
+          -bottom-28
+          lg:-right-36
+        "
+      ></div>
+    </section>
+
+    <!-- Features -->
+    <section class="bg-white py-20 mt-20 lg:mt-60 px-20 pr-10">
+      <!-- Heading -->
+      <div class="sm:w-3/4 lg:w-5/12 mx-auto px-2">
+        <h1 class="text-3xl text-center text-blue-400">Features</h1>
+        <p class="text-center text-gray-400 mt-4 text-2xl">
+        Our aim is to facilitate student growth by providing randomly generated questions in the official examination format.  
+        </p>
+      </div>
+      <!-- Feature #1 -->
+      <div class="relative mt-20 lg:mt-24">
+        <div class="container flex flex-col lg:flex-row items-center justify-center gap-x-24">
+          <!-- Image -->
+          <div class="flex flex-1 justify-center z-10 mb-10 lg:mb-0">
+            <img
+              class="w-5/6 h-5/6 sm:w-3/4 sm:h-3/4 md:w-full md:h-full"
+              src="/assets/illustration-features-tab-1.png"
+              alt=""
+            />
+          </div>
+          <!-- Content -->
+          <div class="flex flex-1 flex-col items-center lg:items-start">
+            <h1 class="text-3xl text-blue-400">Generate papers</h1>
+            <p class="text-gray-400 my-4 text-center lg:text-left sm:w-3/4 lg:w-full text-2xl">
+              Choose your syllabus and semester in order to generate question papers. Each question uploaded by your teacher is associated with a weightage number, which enables a more realistic randomization of questions in the paper.
+            </p>
+            <!-- <button type="button" class="btn btn-purple hover:bg-white hover:text-black">More Info</button> -->
+          </div>
+        </div>
+        <!-- Rounded Rectangle -->
+        <div
+          class="
+            hidden
+            lg:block
+            overflow-hidden
+            bg-purple-700
+            rounded-r-full
+            absolute
+            h-80
+            w-2/4
+            -bottom-24
+            -left-36
+          "
+        ></div>
+      </div>
+      <!-- Feature #2 -->
+      <div class="relative mt-20 lg:mt-52">
+        <div class="container flex flex-col lg:flex-row-reverse items-center justify-center gap-x-24">
+          <!-- Image -->
+          <div class="flex flex-1 justify-center z-10 mb-10 lg:mb-0">
+            <img
+              class="w-5/6 h-5/6 sm:w-3/4 sm:h-3/4 md:w-full md:h-full"
+              src="/assets/illustration-features-tab-2.png"
+              alt=""
+            />
+          </div>
+          <!-- Content -->
+          <div class="flex flex-1 flex-col items-center lg:items-start">
+            <h1 class="text-3xl text-blue-400">Intelligent search</h1>
+            <p class="text-gray-400 my-4 text-center lg:text-left sm:w-3/4 lg:w-full text-2xl">
+              Our website also allows the user to search and view the uploaded questions based on multiple filters, to help students become exam-ready in no time.
+            </p>
+            <!-- <button type="button" class="btn btn-purple hover:bg-white hover:text-black">More Info</button> -->
+          </div>
+        </div>
+        <!-- Rounded Rectangle -->
+        <div
+          class="
+            hidden
+            lg:block
+            overflow-hidden
+            bg-purple-700
+            rounded-l-full
+            absolute
+            h-80
+            w-2/4
+            -bottom-24
+            -right-36
+          "
+        ></div>
+      </div>
+
+      <div class="relative mt-20 lg:mt-52">
+        <div class="container flex flex-col lg:flex-row items-center justify-center gap-x-24">
+          
+          <div class="flex flex-1 justify-center z-10 mb-10 lg:mb-0">
+            <!-- <img
+              class="w-5/6 h-5/6 sm:w-3/4 sm:h-3/4 md:w-full md:h-full"
+              src="/assets/illustration-features-tab-3.png"
+              alt=""
+            /> -->
+          </div>
+          
+          <div class="flex flex-1 flex-col items-center lg:items-start">
+            <!-- <h1 class="text-3xl text-blue-400">Share your bookmarks</h1>
+            <p class="text-gray-400 my-4 text-center lg:text-left sm:w-3/4 lg:w-full">
+              Easily share your bookmarks and collections with others. Create a shareable link that you can send at the
+              click of a button.
+            </p> -->
+            <!-- <button type="button" class="btn btn-purple hover:bg-white hover:text-black">More Info</button> -->
+          </div>
+        </div>
+        <!-- <div
+          class="
+            hidden
+            lg:block
+            overflow-hidden
+            bg-purple-700
+            rounded-r-full
+            absolute
+            h-80
+            w-2/4
+            -bottom-24
+            -left-36
+          "
+        ></div> -->
+      </div>
+    </section>
+
+    <!-- Download
+    <section class="py-20 mt-20">
+      Heading
+      <div class="sm:w-3/4 lg:w-5/12 mx-auto px-2">
+        <h1 class="text-3xl text-center text-blue-400">Download the extension</h1>
+        <p class="text-center text-gray-400 mt-4">
+          We’ve got more browsers in the pipeline. Please do let us know if you’ve got a favourite you’d like us to
+          prioritize.
+        </p>
+      </div>
+      Cards
+      <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-screen-lg mt-16">
+        Card 1
+        <div class="flex flex-col rounded-md shadow-md lg:mb-16">
+          <div class="p-6 flex flex-col items-center">
+            <img src="/assets/logo-chrome.svg" alt="" />
+            <h3 class="mt-5 mb-2 text-blue-400 text-lg">Add to Chrome</h3>
+            <p class="mb-2 text-gray-400 font-light">Minimum version 62</p>
+          </div>
+          <hr class="border-b border-white" />
+          <div class="flex p-6">
+            <button type="button" class="flex-1 btn btn-purple hover:bg-white hover:text-black">
+              Add & Install Extension
+            </button>
+          </div>
+        </div>
+        Card 2
+        <div class="flex flex-col rounded-md shadow-md lg:my-8">
+          <div class="p-6 flex flex-col items-center">
+            <img src="/assets/logo-firefox.svg" alt="" />
+            <h3 class="mt-5 mb-2 text-blue-400 text-lg">Add to Firefox</h3>
+            <p class="mb-2 text-gray-400 font-light">Minimum version 62</p>
+          </div>
+          <hr class="border-b border-white" />
+          <div class="flex p-6">
+            <button type="button" class="flex-1 btn btn-purple hover:bg-white hover:text-black">
+              Add & Install Extension
+            </button>
+          </div>
+        </div>
+        Card 3
+        <div class="flex flex-col rounded-md shadow-md lg:mt-16">
+          <div class="p-6 flex flex-col items-center">
+            <img src="/assets/logo-opera.svg" alt="" />
+            <h3 class="mt-5 mb-2 text-blue-400 text-lg">Add to Opera</h3>
+            <p class="mb-2 text-gray-400 font-light">Minimum version 62</p>
+          </div>
+          <hr class="border-b border-white" />
+          <div class="flex p-6">
+            <button type="button" class="flex-1 btn btn-purple hover:bg-white hover:text-black">
+              Add & Install Extension
+            </button>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- FAQ
+    <section class="bg-white py-20">
+      <div class="container">
+        Heading
+        <div class="sm:w-3/4 lg:w-5/12 mx-auto px-2">
+          <h1 class="text-3xl text-center text-blue-400">Frequently Asked Questions</h1>
+          <p class="text-center text-gray-400 mt-4">
+            Here are some of our FAQs. If you have any other questions you’d like answered please feel free to email us.
+          </p>
+        </div>
+        FAQ Items
+        <div class="flex flex-col sm:w-3/4 lg:w-5/12 mt-12 mx-auto">
+          <div class="flex items-center border-b py-4">
+            <span class="flex-1">What is a Bookmark?</span>
+            <i class="text-purple-600 fas fa-chevron-down"></i>
+          </div>
+          <div class="flex items-center border-b py-4">
+            <span class="flex-1">How can I request a new browser?</span>
+            <i class="text-purple-600 fas fa-chevron-down"></i>
+          </div>
+          <div class="flex items-center border-b py-4">
+            <span class="flex-1">Is there a mobile app?</span>
+            <i class="text-purple-600 fas fa-chevron-down"></i>
+          </div>
+          <div class="flex items-center border-b py-4">
+            <span class="flex-1">What about other Chromium browsers?</span>
+            <i class="text-purple-600 fas fa-chevron-down"></i>
+          </div>
+          <button type="button" class="mt-12 flex self-center btn btn-purple hover:bg-white hover:text-black">
+            More Info
+          </button>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Contact Us -->
+    <section class="bg-purple-700 text-white py-10">
+      <div class="container">
+        <div class="sm:w-3/4 lg:w-2-last mx-auto">
+          <!-- <p class="font-light uppercase text-center mb-8">35,000+ ALREADY JOINED</p>
+          <h1 class="text-3xl text-center">Stay up-to-date with what we’re doing</h1> -->
+          <div class="flex flex-col sm:flex-row gap-6 mt-8">
+            <!-- <input
+              type="text"
+              placeholder="Enter your email address"
+              class="focus:outline-none flex-1 px-2 py-3 rounded-md text-black"
+            /> -->
+            <!-- <button type="button" class="btn bg-red-500 hover:bg-white hover:text-black">
+              Contact Us
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-500 py-8">
+      <div class="container flex flex-col md:flex-row items-center">
+        <div class="flex flex-1 flex-wrap items-center justify-center md:justify-start gap-12">
+          <ul class="flex text-white uppercase gap-12 text-xs">
+            <!-- <li class="cursor-pointer">Features</li>
+            <li class="cursor-pointer">Pricing</li>
+            <li class="cursor-pointer">Contact</li> -->
+          </ul>
+        </div>
+        <div class="flex gap-10 mt-12 md:mt-0">
+          <!-- <li><i class="text-white text-2xl fab fa-twitter"></i></li>
+          <li><i class="text-white text-2xl fab fa-facebook-square"></i></li> -->
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
-
-

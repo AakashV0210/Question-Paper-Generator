@@ -1,4 +1,4 @@
-<!-- <link rel="stylesheet" href="/css/teacher_page.css"> -->
+<link rel="stylesheet" href="/css/teacher_page.css">
 
 
 <div id="viewer" style="display: none">
@@ -6,16 +6,18 @@
   <% if(path.includes("view-questions-all")) { %>
 
   <!-- Selecting the filter  -->
-  <div id = "filter">
-    SELECT FILTER<br><br>
-    <input type="radio" id="syllabus_filter" name="filter" onclick="select_syllabus()" value="syllabus"></input>
-    <label for="syllabus_filter">Syllabus</label><br>
-    <input type="radio" id="semester_filter" name="filter" onclick="select_semester()" value="semester"></input>
-    <label for="semester_filter">Semester</label><br>
-    <input type="radio" id="chapter_filter" name="filter" onclick="display_search_box()" value="chapter" ></input>
-    <label for="chapter_filter">Chapter</label><br>
-    <input type="radio" id="question_filter" name="filter" onclick="display_search_box()" value="question"></input>
-    <label for="question_filter">Questions</label><br>
+  SELECT FILTER<br><br>
+  <div id = "filter" class="flex">
+    <div class="flex items-start mr-4">
+      <input type="radio" id="syllabus_filter" name="filter" onclick="select_syllabus()" value="syllabus" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="syllabus_filter" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">Syllabus</label><br>
+      <input type="radio" id="semester_filter" name="filter" onclick="select_semester()" value="semester"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="semester_filter" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">Semester</label><br>
+      <input type="radio" id="chapter_filter" name="filter" onclick="display_search_box()" value="chapter"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" >
+      <label for="chapter_filter" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">Chapter</label><br>
+      <input type="radio" id="question_filter" name="filter" onclick="display_search_box()" value="question"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label for="question_filter" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">Questions</label><br>
+    </div>
   </div>
 
   <br>
@@ -24,11 +26,13 @@
   <div id="syllabus" style="display:none ;">
     SELECT SYLLABUS<br><br>
     <form action="#" id="syllabus_form"  onsubmit="return validate_syllabus_and_semester()">
-      <input type="radio" id="ugc2015" name="syllabus" value="ugc2015"></input>
-      <label for="ugc2015">UGC 2015</label><br>
-      <input type="radio" id="ugc2018" name="syllabus" value="ugc2018"></input>
-      <label for="ugc2018">UGC 2018</label><br>
-      <input type="submit" value="Search">
+      <input type="radio" id="ugc2015" name="syllabus" value="ugc2015" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="ugc2015" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">UGC 2015</label><br>
+      <input type="radio" id="ugc2018" name="syllabus" value="ugc2018" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="ugc2018" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">UGC 2018</label><br><br><br>
+      <button class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer">
+        <input type="submit" value="Search">
+      </button>
     </form>
 
   </div>
@@ -39,19 +43,23 @@
   <div id="semester" style="display:none ;">
     SELECT SEMESTER<br><br>
     <form action="#" id="semester_form"  onsubmit="return validate_syllabus_and_semester()">
-      <input type="radio" id="sem_1" name="semester"  value = "1"></input>
-      <label for="sem_1">1</label><br>
-      <input type="radio" id="sem_2" name="semester"  value = "2"></input>
-      <label for="sem_2">2</label><br>
-      <input type="radio" id="sem_3" name="semester"  value = "3"></input>
-      <label for="sem_3">3</label><br>
-      <input type="radio" id="sem_4" name="semester" value = "4"></input>
-      <label for="sem_4">4</label><br>
-      <input type="radio" id="sem_5" name="semester" value = "5"></input>
-      <label for="sem_5">5</label><br>
-      <input type="radio" id="sem_6" name="semester" value = "6"></input>
-      <label for="sem_6">6</label><br>
+      <input type="radio" id="sem_1" name="semester"  value = "1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="sem_1" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">1</label><br>
+      <input type="radio" id="sem_2" name="semester"  value = "2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="sem_2" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">2</label><br>
+      <input type="radio" id="sem_3" name="semester"  value = "3" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="sem_3" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">3</label><br>
+      <input type="radio" id="sem_4" name="semester" value = "4" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="sem_4" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">4</label><br>
+      <input type="radio" id="sem_5" name="semester" value = "5" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="sem_5" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">5</label><br>
+      <input type="radio" id="sem_6" name="semester" value = "6" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="sem_6" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">6</label><br>
+      <br>
+      <button class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer">
       <input type="submit" value="Search">
+      </button>
+      <br><br><br>
     </form>
     
   </div>
@@ -62,7 +70,9 @@
     <form action="#" id="search_form" onsubmit="return validate_chapter_and_question()">
       <label for="search_input">Search Entry:</label>
       <input type="text" id="search_input" name="search_input" >
+      <button class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer">
       <input type="submit" value="Search">
+      </button>
     </form>
     <br><br>
 
@@ -72,31 +82,34 @@
   
   <!-- Printing the tables -->
   <% if(locals.userdata){ %>
-    ALL QUESTIONS
-  <table border="1">
+    <div class="text-black antialiased font-bold tracking-widest text-3xl">ALL QUESTIONS</div>
+    
+  <table class="table-auto border-double flex-auto">
     <tr>
-      <th>syllabus</th>
-      <th>semester</th>
-      <th>chapter</th>
-      <th>unit</th>
-      <th>marks</th>
-      <th>priority</th>
-      <th>question</th>
-      <th>edit</th>
-      <th>delete</th>
+      <th class="border px-4 py-2">Syllabus</th>
+      <th class="border px-4 py-2">Semester</th>
+      <th class="border px-4 py-2">Chapter</th>
+      <th class="border px-4 py-2">Unit</th>
+      <th class="border px-4 py-2">Marks</th>
+      <th class="border px-4 py-2">Priority</th>
+      <th class="border px-4 py-2">Question</th>
+      <th class="border px-4 py-2">Edit</th>
+      <th class="border px-4 py-2">Delete</th>
     </tr>
 
     <% if(userdata.length!=0){ var i=1; userdata.forEach(function(data){ %>
     <tr>
-      <td><%=data.syllabus %></td>
-      <td><%=data.semester %></td>
-      <td><%=data.chapter %></td>
-      <td><%=data.unit %></td>
-      <td><%=data.marks %></td>
-      <td><%=data.priority %></td>
-      <td><%=data.question %></td>
-      <td><a href="/teacher_page/edit-page/<%=data.id%>">Edit</a></td>
-      <td><a href="/teacher_page/delete-entry/<%=data.id%>">Delete</a></td>
+      <td class="border px-4 py-2 text-center"><%=data.syllabus %></td>
+      <td class="border px-4 py-2 text-center"><%=data.semester %></td>
+      <td class="border px-4 py-2 text-center"><%=data.chapter %></td>
+      <td class="border px-4 py-2 text-center"><%=data.unit %></td>
+      <td class="border px-4 py-2 text-center"><%=data.marks %></td>
+      <td class="border px-4 py-2 text-center"><%=data.priority %></td>
+      <td class="border px-4 py-2 text-center"><%=data.question %></td>
+      <td class="border px-4 py-2 hover:bg-slate-200"><a href="/teacher_page/edit-page/<%=data.id%>">Edit</a></td>
+            <td class="border px-4 py-2 hover:bg-slate-200"><a href="/teacher_page/delete-entry/<%=data.id%>">Delete</a></td>
+      <!-- <td><a href="#">Edit</a></td>
+      <td><a href="#">Delete</a></td> -->
     </tr>
     <% i++; }) %> <% } else{ %>
     <tr>

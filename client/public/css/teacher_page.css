@@ -103,7 +103,7 @@ header button {
 
 .sidebar ul {
   list-style-type: none;
-  margin-top: 5rem;
+  margin-top: 1rem;
   font-size: 1rem;
 }
 
@@ -123,7 +123,7 @@ footer {
   color: #fff;
   text-align: center;
   padding: 20px 0;
-  margin-top: 60px;
+  margin-top: 30px;
   padding: 20px 0;
   background-color: #9f9c9c;
   /* bottom: 0px; */

@@ -3,7 +3,8 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="/css/teacher_page.css" />
+    <!-- <link rel="stylesheet" href="/css/teacher_page.css" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- <script type="text/javascript" src="/scripts/teacher_page.js"></script> -->
 
@@ -28,29 +29,32 @@
     <div class="container">
       <%- include('../partials/header'); %>
      
-    
         <div class="wrapper">
           <%- include('../partials/sidebar'); %>
             
             <section class="main">
               <!-- <img src="http://abbeyjfitzgerald.com/wp-content/uploads/2017/06/flexbox-header.jpg"> -->
-                <h2 class="h2">QUESTION PAPER GENERATOR</h2>
+                <h2 class="h2 underline">QUESTION PAPER GENERATOR</h2>
 
                 <%- include('../partials/viewer'); %>
 
                 <%- include('../partials/generator'); %>
 
                 <%- include('../partials/add'); %>
+
+              
         </div>  
           
-        <footer>
 
-            <!-- <h3>Flexbox Layout Example</h3>
-            <p>Hope you enjoyed learning about Flexbox Layouts!</p> -->
-        </footer>
     
     </div>
-    
+
     </div>
+
   </body>
+  <footer>
+
+    <!-- <h3>Flexbox Layout Example</h3>
+    <p>Hope you enjoyed learning about Flexbox Layouts!</p> -->
+  </footer>
 </html>

@@ -3,29 +3,32 @@
   <div id="question_generator_syllabus">
 
     SELECT SYLLABUS<br><br>
-    <input type="radio" id="generator_ugc2015" name="generator_syllabus" onclick="display_generate_semester_form()"value="ugc2015"></input>
-    <label for="generator_ugc2015">UGC 2015</label><br>
-    <input type="radio" id="generator_ugc2018" name="generator_syllabus" onclick="display_generate_semester_form()" value="ugc2018"></input>
-    <label for="generator_ugc2018">UGC 2018</label><br>
+    <input type="radio" id="generator_ugc2015" name="generator_syllabus" onclick="display_generate_semester_form()"value="ugc2015" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+    <label for="generator_ugc2015" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">UGC 2015</label><br>
+    <input type="radio" id="generator_ugc2018" name="generator_syllabus" onclick="display_generate_semester_form()" value="ugc2018" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+    <label for="generator_ugc2018" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">UGC 2018</label><br>
   </div>
 
     <br>
   <div id="question_generator_semester" style="display: none;">
     SELECT SEMESTER<br><br>
     <form action="#" id="generator_form"  onsubmit="return validate_question_generate()">
-      <input type="radio" id="generator_sem_1" name="generator_semester"  value = "1"></input>
-      <label for="generator_sem_1">1</label><br>
-      <input type="radio" id="generator_sem_2" name="generator_semester"  value = "2"></input>
-      <label for="generator_sem_2">2</label><br>
-      <input type="radio" id="generator_sem_3" name="generator_semester"  value = "3"></input>
-      <label for="generator_sem_3">3</label><br>
-      <input type="radio" id="generator_sem_4" name="generator_semester" value = "4"></input>
-      <label for="generator_sem_4">4</label><br>
-      <input type="radio" id="generator_sem_5" name="generator_semester" value = "5"></input>
-      <label for="generator_sem_5">5</label><br>
-      <input type="radio" id="generator_sem_6" name="generator_semester" value = "6"></input>
-      <label for="generator_sem_6">6</label><br>
-      <input type="submit" value="Submit">
+      <input type="radio" id="generator_sem_1" name="generator_semester"  value = "1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="generator_sem_1" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">1</label><br>
+      <input type="radio" id="generator_sem_2" name="generator_semester"  value = "2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="generator_sem_2" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">2</label><br>
+      <input type="radio" id="generator_sem_3" name="generator_semester"  value = "3" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="generator_sem_3" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">3</label><br>
+      <input type="radio" id="generator_sem_4" name="generator_semester" value = "4" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="generator_sem_4" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">4</label><br>
+      <input type="radio" id="generator_sem_5" name="generator_semester" value = "5" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="generator_sem_5" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">5</label><br>
+      <input type="radio" id="generator_sem_6" name="generator_semester" value = "6" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <label for="generator_sem_6" class="mr-8 text-sm font-medium text-gray-900 dark:text-gray-300">6</label><br>
+      <br><br>
+      <button class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer">
+        <input type="submit" value="Submit">
+      </button>
     </form>
     
   </div>
@@ -38,11 +41,11 @@
   <div id="generated_questions">
     <% if(locals.generator_mark_2_data){ %>
     <ul>
-      2 MARK QUESTIONS<br>
+      <div class="font-semibold mt-11">2 MARK QUESTIONS</div><br>
       <% var i = 1; generator_mark_2_data.forEach(function(data){ %>
         
         <% if(data != undefined){ %>
-          <li><%=i%>. <%= data %></li>
+          <div class="leading-10"><li><%=i%>. <%= data %></li></div>
         <% } else{ %>
           <li><%=i%>. NO QUESTIONS AVAILABLE</li>
         <% } %>
@@ -52,11 +55,11 @@
     <br>
 
     <ul>
-      6 MARK QUESTIONS<br>
+      <div class="font-semibold mt-11">6 MARK QUESTIONS</div><br>
       <% var i = 1; generator_mark_6_data.forEach(function(data){ %>
         
         <% if(data != undefined){ %>
-          <li><%=i%>. <%= data %></li>
+          <div class="leading-10"><li><%=i%>. <%= data %></li></div>
         <% } else{ %>
           <li><%=i%>. NO QUESTIONS AVAILABLE</li>
         <% } %>
@@ -66,23 +69,26 @@
     <br>
 
     <ul>
-      10 MARK QUESTIONS <br>
+      <div class="font-semibold mt-11">10 MARK QUESTIONS</div> <br>
       <% var i = 1; generator_mark_10_data.forEach(function(data){ %>
         
         <% if(data != undefined){ %>
-          <li><%=i%>. <%= data %></li>
+          <div class="leading-10"><li><%=i%>. <%= data %></li></div>
         <% } else{ %>
           <li><%=i%>. NO QUESTIONS AVAILABLE</li>
         <% } %>
 
       <% i++; }) %>
     </ul>
+    <br><br>
     <% } %>
   </div>
 
-  <div>
+  <button>
+  <div class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer" > 
     <a href="/teacher_page/generate-question-view">BACK</a>
   </div>
+  </button> 
   <% } %>
   
 </div>
