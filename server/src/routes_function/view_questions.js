@@ -9,7 +9,6 @@ exports.view_all_questions = async (req, res) => {
     const current_url = req.url;
     const page_name = current_url.split("/");
     const page_file = page_name[1] + ".ejs";
-    // console.log(page_file);
 
     if (filter == undefined) {
       await pool.query(
