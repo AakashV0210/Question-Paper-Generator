@@ -1,51 +1,51 @@
 syllabus,semester,chapter,unit,marks,priority,question
-UGC 2018,5,System Software,2,6,1,Explain the Various Registers of IBM 360/370 Machine.
-UGC 2018,5,System Software,1,6,3,Explain the Design Procedure of an Assembler.
-UGC 2018,5,System Software,3,6,2,Explain Radix Exchange Sort.
-UGC 2018,5,System Software,1,6,1,Explain Macro instructions defining Macros.
-UGC 2018,5,System Software,2,6,1,Explain Compile and Go loader scheme.
-UGC 2015,5,System Software,3,6,3,ABC.
-UGC 2015,5,System Software,1,6,2,XYZ.
-UGC 2015,5,System Software,1,6,1,PQR.
-UGC 2018,5,JAVA,1,2,1,AB
-UGC 2018,5,JAVA,2,2,1,BC
-UGC 2018,5,JAVA,3,2,2,CD
-UGC 2018,5,JAVA,4,2,1,EF
-UGC 2018,5,JAVA,5,2,1,FG
-UGC 2018,5,Software Engineering,1,2,2,GH
-UGC 2018,5,Software Engineering,2,2,1,HI
-UGC 2018,5,Software Engineering,3,2,2,IJ
-UGC 2018,5,Software Engineering,4,2,1,JK
-UGC 2018,5,Software Engineering,5,2,1,KL
-UGC 2018,5,JAVA,2,6,4,BCD
-UGC 2018,5,JAVA,3,3,2,CDE
-UGC 2018,5,JAVA,4,3,2,CDEE
-UGC 2018,5,JAVA,5,4,1,DEF
-UGC 2018,5,JAVA,5,2,1,DEFF
-UGC 2018,5,Software Engineering,1,6,2,FGH
-UGC 2018,5,Software Engineering,2,6,2,GHI
-UGC 2018,5,Software Engineering,3,5,1,HIJ
-UGC 2018,5,Software Engineering,4,1,1,HIJJ
-UGC 2018,5,Software Engineering,5,6,3,IJK
-UGC 2018,5,JAVA,1,5,3,ABCDE 
-UGC 2018,5,JAVA,1,5,3,ABCDEE 
-UGC 2018,5,Software Engineering,4,10,3,BCDEF
-UGC 2018,5,Software Engineering,5,10,3,CDEFG
-UGC 2018,5,JAVA,3,3,2,X
-UGC 2018,5,JAVA,4,3,2,Y
-UGC 2018,5,JAVA,3,4,2,P
-UGC 2018,5,JAVA,4,4,2,Q
-UGC 2018,5,JAVA,4,2,1,A
-UGC 2018,5,JAVA,5,2,1,B
-UGC 2018,5,Software Engineering,1,2,2,C
-UGC 2018,5,Software Engineering,2,2,1,D
-UGC 2018,5,Software Engineering,3,2,2,E
-UGC 2018,5,Software Engineering,4,2,1,F
-UGC 2018,5,Software Engineering,5,2,1,G
-UGC 2018,5,JAVA,2,6,2,H
-UGC 2018,5,JAVA,2,6,2,I
-UGC 2018,5,JAVA,2,6,1,J
-UGC 2018,5,JAVA,2,6,1,K
-UGC 2018,5,JAVA,2,6,3,L
-UGC 2018,5,JAVA,2,5,3,M
-UGC 2018,5,JAVA,2,5,3,N
+UGC2018,5,System Software,2,6,1,Explain the Various Registers of IBM 360/370 Machine.
+UGC2018,5,System Software,1,6,3,Explain the Design Procedure of an Assembler.
+UGC2018,5,System Software,3,6,2,Explain Radix Exchange Sort.
+UGC2018,5,System Software,1,6,1,Explain Macro instructions defining Macros.
+UGC2018,5,System Software,2,6,1,Explain Compile and Go loader scheme.
+UGC2015,5,System Software,3,6,3,ABC.
+UGC2015,5,System Software,1,6,2,XYZ.
+UGC2015,5,System Software,1,6,1,PQR.
+UGC2018,5,JAVA,1,2,1,AB
+UGC2018,5,JAVA,2,2,1,BC
+UGC2018,5,JAVA,3,2,2,CD
+UGC2018,5,JAVA,4,2,1,EF
+UGC2018,5,JAVA,5,2,1,FG
+UGC2018,5,Software Engineering,1,2,2,GH
+UGC2018,5,Software Engineering,2,2,1,HI
+UGC2018,5,Software Engineering,3,2,2,IJ
+UGC2018,5,Software Engineering,4,2,1,JK
+UGC2018,5,Software Engineering,5,2,1,KL
+UGC2018,5,JAVA,2,6,4,BCD
+UGC2018,5,JAVA,3,3,2,CDE
+UGC2018,5,JAVA,4,3,2,CDEE
+UGC2018,5,JAVA,5,4,1,DEF
+UGC2018,5,JAVA,5,2,1,DEFF
+UGC2018,5,Software Engineering,1,6,2,FGH
+UGC2018,5,Software Engineering,2,6,2,GHI
+UGC2018,5,Software Engineering,3,5,1,HIJ
+UGC2018,5,Software Engineering,4,1,1,HIJJ
+UGC2018,5,Software Engineering,5,6,3,IJK
+UGC2018,5,JAVA,1,5,3,ABCDE 
+UGC2018,5,JAVA,1,5,3,ABCDEE 
+UGC2018,5,Software Engineering,4,10,3,BCDEF
+UGC2018,5,Software Engineering,5,10,3,CDEFG
+UGC2018,5,JAVA,3,3,2,X
+UGC2018,5,JAVA,4,3,2,Y
+UGC2018,5,JAVA,3,4,2,P
+UGC2018,5,JAVA,4,4,2,Q
+UGC2018,5,JAVA,4,2,1,A
+UGC2018,5,JAVA,5,2,1,B
+UGC2018,5,Software Engineering,1,2,2,C
+UGC2018,5,Software Engineering,2,2,1,D
+UGC2018,5,Software Engineering,3,2,2,E
+UGC2018,5,Software Engineering,4,2,1,F
+UGC2018,5,Software Engineering,5,2,1,G
+UGC2018,5,JAVA,2,6,2,H
+UGC2018,5,JAVA,2,6,2,I
+UGC2018,5,JAVA,2,6,1,J
+UGC2018,5,JAVA,2,6,1,K
+UGC2018,5,JAVA,2,6,3,L
+UGC2018,5,JAVA,2,5,3,M
+UGC2018,5,JAVA,2,5,3,N

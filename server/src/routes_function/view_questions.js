@@ -57,7 +57,7 @@ exports.view_all_questions = async (req, res) => {
             });
           }
         );
-      } else if (filter.toLowerCase() === "questions") {
+      } else if (filter.toLowerCase() === "question") {
         await pool.query(
           "SELECT * FROM question_paper WHERE LOWER(question) LIKE $1",
           [filter_value.toLowerCase() + "%"],
