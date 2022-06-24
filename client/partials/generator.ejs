@@ -81,7 +81,13 @@
   </div>
 
   <div>
-    <a href="/teacher_page/generate-question-view">BACK</a>
+    <% if(path.includes("teacher_page")){ %>
+      <a href="/teacher_page/generate-question-view">BACK</a>
+    <% } else { %>
+      <a href="/student_page/generate-question-view">BACK</a>
+    <% } %>
+
+    
   </div>
   <% } %>
   

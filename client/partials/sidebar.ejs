@@ -1,16 +1,37 @@
 <aside class="sidebar">
-  <h2>Hello <%= user %></h2>
+  <% if(path.includes("teacher_page")){ %> <% if(locals.user){ %>
+  <h2>Welcome <%= user %></h2>
+  <% } %>
+
   <ul>
     <li>
       <a href="/teacher_page/generate-question-view" class="button1"
         >Generate Question Paper</a
       >
     </li>
+
     <li>
       <a href="/teacher_page/add-page" class="button1">Add questions</a>
     </li>
+
     <li>
       <a href="/teacher_page/view-questions-all" class="button1">view/edit</a>
     </li>
   </ul>
+
+  <% } else { %>
+
+  <h2>Welcome</h2>
+  <ul>
+    <li>
+      <a href="/student_page/generate-question-view" class="button1"
+        >Generate Question Paper</a
+      >
+    </li>
+
+    <li>
+      <a href="/student_page/view-questions-all" class="button1">view/edit</a>
+    </li>
+  </ul>
+  <% } %>
 </aside>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="/css/teacher_page.css" />
+
+    <!-- <script type="text/javascript" src="/scripts/teacher_page.js"></script> -->
+
+    <script type="text/javascript" src="/scripts/toggle_text.js"></script>
+    <script type="text/javascript" src="/scripts/view_questions.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/edit_questions.js"></script> -->
+    <script type="text/javascript" src="/scripts/generate_questions.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/add_questions.js"></script> -->
+
+  </head>
+ 
+  <% if(path.includes("view-questions")){ %>
+    <body onload="toggleText1()">
+  <% } else if((path.includes("generate-question-view")) || (path.includes("generate-questions"))){ %>
+    <body onload = "toggleText2()">
+  <% } else { %>
+    <body> 
+  <% } %>    
+  <!-- <body> -->
+    <div class="container">
+      <%- include('../partials/header'); %>
+     
+    
+        <div class="wrapper">
+          <%- include('../partials/sidebar'); %>
+            
+            <section class="main">
+              <!-- <img src="http://abbeyjfitzgerald.com/wp-content/uploads/2017/06/flexbox-header.jpg"> -->
+                <h2 class="h2">QUESTION PAPER GENERATOR</h2>
+
+                <%- include('../partials/viewer'); %>
+
+                <%- include('../partials/generator'); %>
+
+        </div>    
+        <footer>
+
+            <!-- <h3>Flexbox Layout Example</h3>
+            <p>Hope you enjoyed learning about Flexbox Layouts!</p> -->
+        </footer>
+    
+    </div>
+    
+    </div>
+  </body>
+</html>

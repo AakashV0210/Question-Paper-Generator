@@ -65,11 +65,13 @@
 
   </div>
 
+  ALL QUESTIONS
+
   <% } %> 
   
   <!-- Printing the tables -->
   <% if(locals.userdata){ %>
-    ALL QUESTIONS
+    
   <table border="1">
     <tr>
       <th>syllabus</th>
@@ -79,8 +81,10 @@
       <th>marks</th>
       <th>priority</th>
       <th>question</th>
-      <th>edit</th>
-      <th>delete</th>
+      <% if(path.includes("teacher_page")){ %>
+        <th>edit</th>
+        <th>delete</th>
+      <% } %>
     </tr>
 
     <% if(userdata.length!=0){ var i=1; userdata.forEach(function(data){ %>
@@ -92,8 +96,10 @@
       <td><%=data.marks %></td>
       <td><%=data.priority %></td>
       <td><%=data.question %></td>
-      <td><a href="/teacher_page/edit-page/<%=data.id%>">Edit</a></td>
-      <td><a href="/teacher_page/delete-entry/<%=data.id%>">Delete</a></td>
+      <% if(path.includes("teacher_page")){ %>
+        <td><a href="/teacher_page/edit-page/<%=data.id%>">Edit</a></td>
+        <td><a href="/teacher_page/delete-entry/<%=data.id%>">Delete</a></td>
+      <% } %>
     </tr>
     <% i++; }) %> <% } else{ %>
     <tr>

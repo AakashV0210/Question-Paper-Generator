@@ -22,7 +22,7 @@ function select_syllabus() {
     if (radiobutton[i].checked) {
       filter = radiobutton[i].value;
       document.getElementById("syllabus").style.display = "block";
-      console.log(filter);
+      // console.log(filter);
     }
   }
 }
@@ -48,7 +48,7 @@ function select_semester() {
     if (radiobutton[i].checked) {
       filter = radiobutton[i].value;
       document.getElementById("semester").style.display = "block";
-      console.log(filter);
+      // console.log(filter);
     }
   }
 }
@@ -69,7 +69,7 @@ function validate_syllabus_and_semester() {
 
   if (count == 1) {
     view_questions_with_filter();
-    console.log("a");
+    // console.log("a");
   } else {
     alert("You must select something!");
     return false;
@@ -105,13 +105,21 @@ function validate_chapter_and_question() {
 
 //displaying the filtered questions
 function view_questions_with_filter() {
-  const path = "/teacher_page/view-questions/" + filter + "/" + filter_val;
+  const url = window.location.pathname;
+  // console.log(url);
+  const page_name = url.split("/");
+  // console.log(page_name);
+  // console.log(page_name[1]);
+  // console.log("a");
+
+  const path =
+    "/" + page_name[1] + "/view-questions/" + filter + "/" + filter_val;
 
   if (filter === "chapter" || filter === "question") {
     document.getElementById("search_form").setAttribute("action", path);
   } else {
     let id = filter + "_form";
-    console.log(id);
+    // console.log(id);
     document.getElementById(id).setAttribute("action", path);
   }
 }
