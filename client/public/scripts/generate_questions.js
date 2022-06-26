@@ -1,7 +1,16 @@
-let generator_semester_value, generator_syllabus_value;
+let generator_semester_value,
+  generator_syllabus_value,
+  generator_paper_value = undefined;
 
 function display_generate_semester_form() {
   document.getElementById("question_generator_semester").style.display = "none";
+  // document.getElementById("question_generator_paper_sem_5").style.display =
+  //   "none";
+  // document.getElementById("question_generator_paper_sem_6").style.display =
+  //   "none";
+
+  document.getElementById("question_generator_paper_selection").style.display =
+    "none";
 
   var semester_radio_button = document.getElementsByName("generator_semester");
 
@@ -22,40 +31,80 @@ function display_generate_semester_form() {
   }
 }
 
+function remove_paper_selection() {
+  document.getElementById("question_generator_paper_selection").style.display =
+    "none";
+}
+
+function display_paper_selection() {
+  document.getElementById("question_generator_paper_selection").style.display =
+    "block";
+}
+
 function validate_question_generate() {
-  let count = 0;
+  let count_sem = 0;
+  let count_paper = 0;
 
   var semester_radio_button = document.getElementsByName("generator_semester");
 
   for (let i = 0; i < semester_radio_button.length; i++) {
     if (semester_radio_button[i].checked) {
       generator_semester_value = semester_radio_button[i].value;
-      count++;
+      count_sem++;
     }
   }
 
-  if (count == 1) {
-    display_generated_questions();
+  if (generator_semester_value == 5 || generator_semester_value == 6) {
+    var paper_radio_button = document.getElementsByName("paper_selector");
+    for (let i = 0; i < paper_radio_button.length; i++) {
+      if (paper_radio_button[i].checked) {
+        generator_paper_value = paper_radio_button[i].value;
+        count_paper++;
+      }
+    }
+
+    if (count_paper == 1) {
+      display_generated_questions();
+    } else {
+      alert("You must select something!");
+      return false;
+    }
   } else {
-    alert("You must select something!");
-    return false;
+    if (count_sem == 1) {
+      display_generated_questions();
+    } else {
+      alert("You must select something!");
+      return false;
+    }
   }
 }
 
 function display_generated_questions() {
   const url = window.location.pathname;
-  // console.log(url);
   const page_name = url.split("/");
-  // console.log(page_name);
-  // console.log(page_name[1]);
+  console.log(generator_paper_value);
 
-  const path =
-    "/" +
-    page_name[1] +
-    "/generate-questions/" +
-    generator_syllabus_value +
-    "/" +
-    generator_semester_value;
+  if (generator_paper_value != undefined) {
+    const path =
+      "/" +
+      page_name[1] +
+      "/generate-questions/" +
+      generator_syllabus_value +
+      "/" +
+      generator_semester_value +
+      "/" +
+      generator_paper_value;
 
-  document.getElementById("generator_form").setAttribute("action", path);
+    document.getElementById("generator_form").setAttribute("action", path);
+  } else {
+    const path =
+      "/" +
+      page_name[1] +
+      "/generate-questions/" +
+      generator_syllabus_value +
+      "/" +
+      generator_semester_value;
+
+    document.getElementById("generator_form").setAttribute("action", path);
+  }
 }

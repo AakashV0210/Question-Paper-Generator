@@ -13,19 +13,28 @@
   <div id="question_generator_semester" style="display: none;">
     SELECT SEMESTER<br><br>
     <form action="#" id="generator_form"  onsubmit="return validate_question_generate()">
-      <input type="radio" id="generator_sem_1" name="generator_semester"  value = "1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <input type="radio" id="generator_sem_1" name="generator_semester"  value = "1" onclick="remove_paper_selection()" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
       <label for="generator_sem_1" class="mr-8 text-sm font-medium text-gray-900  ">1</label><br>
-      <input type="radio" id="generator_sem_2" name="generator_semester"  value = "2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <input type="radio" id="generator_sem_2" name="generator_semester"  value = "2" onclick="remove_paper_selection()" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
       <label for="generator_sem_2" class="mr-8 text-sm font-medium text-gray-900  ">2</label><br>
-      <input type="radio" id="generator_sem_3" name="generator_semester"  value = "3" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <input type="radio" id="generator_sem_3" name="generator_semester"  value = "3" onclick="remove_paper_selection()" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
       <label for="generator_sem_3" class="mr-8 text-sm font-medium text-gray-900  ">3</label><br>
-      <input type="radio" id="generator_sem_4" name="generator_semester" value = "4" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <input type="radio" id="generator_sem_4" name="generator_semester" value = "4" onclick="remove_paper_selection()" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
       <label for="generator_sem_4" class="mr-8 text-sm font-medium text-gray-900  ">4</label><br>
-      <input type="radio" id="generator_sem_5" name="generator_semester" value = "5" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <input type="radio" id="generator_sem_5" name="generator_semester" value = "5" onclick="display_paper_selection()" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
       <label for="generator_sem_5" class="mr-8 text-sm font-medium text-gray-900  ">5</label><br>
-      <input type="radio" id="generator_sem_6" name="generator_semester" value = "6" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+      <input type="radio" id="generator_sem_6" name="generator_semester" value = "6" onclick="display_paper_selection()" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
       <label for="generator_sem_6" class="mr-8 text-sm font-medium text-gray-900  ">6</label><br>
       <br><br>
+
+      <div id="question_generator_paper_selection" style="display: none;"> 
+
+        <input type="radio" id="paper_1" name="paper_selector" value = "paper_1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+        <label for="paper_1" class="mr-8 text-sm font-medium text-gray-900  ">paper_1</label><br>
+        <input type="radio" id="paper_2" name="paper_selector" value = "paper_2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></input>
+        <label for="paper_2" class="mr-8 text-sm font-medium text-gray-900  ">paper_2</label><br>
+      
+    </div>
       <button class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer">
         <input type="submit" value="Submit">
       </button>
@@ -40,6 +49,13 @@
   <% }else if(path.includes("generate-questions")){%>
   <div id="generated_questions">
     <% if(locals.generator_mark_2_data){ %>
+
+      <h3 class="text-xl font-bold text-center"> ST. JOSEPH'S COLLEGE(AUTONOMOUS)</h3>
+      <h3 class="text-xl font-bold text-center">BANGALORE-27</h3>
+      <h3 class="text-xl font-bold text-center">SEMESTER <%=sem%></h3>
+      <h3 class="text-xl font-bold text-center">END SEMESTER EXAMINATIONS : JAN 2022</h3>
+      <h3 class="text-xl font-bold text-center">PAPER CODE : <%=paper_code%></h3>
+
     <ul>
       <div class="font-semibold mt-11">2 MARK QUESTIONS</div><br>
       <% var i = 1; generator_mark_2_data.forEach(function(data){ %>

@@ -61,6 +61,11 @@ header button {
   border-radius: 1.25rem;
   background-color: #51bb7b;
 }
+header h2 {
+  font-size: 32px;
+  margin: 1rem 0;
+  color: #50c6db;
+}
 
 /* Main Section */
 
@@ -189,10 +194,9 @@ footer p {
   text-align: center;
 }
 
+/* TABLE */
 
- /* TABLE */
-
- .st_table{
+.st_table {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -200,77 +204,77 @@ footer p {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.st_viewport{
+.st_viewport {
   /* max-height: 100px; */
   overflow: auto;
 }
-.st_viewport{
-  background-color: rgb(62,148,236);
-  color: rgb(27,30,36);
+.st_viewport {
+  background-color: rgb(62, 148, 236);
+  color: rgb(27, 30, 36);
   margin: 20px 0;
 }
 
-.st_table_header{
+.st_table_header {
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
   z-index: 1;
-  background-color: rgb(27,30,36);
-  color: rgb(220,220,220);
+  background-color: rgb(27, 30, 36);
+  color: rgb(220, 220, 220);
 }
-.st_table_header h3{
+.st_table_header h3 {
   font-weight: 400;
   margin: 0 20px;
   padding: 20px 0 0;
 }
 
-.st_table_header .st_row{
-  color: rgba(220,220,220, .7);
+.st_table_header .st_row {
+  color: rgba(220, 220, 220, 0.7);
 }
 
-.st_row{
+.st_row {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   margin: 0;
 }
-.st_table .st_row:nth-child(even){
-  background-color: rgba(0,0,0, .1)
+.st_table .st_row:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.st_column{
+.st_column {
   padding: 10px 20px;
 }
 
-._syllabus{
+._syllabus {
   min-width: 80px;
 }
-._semester{
+._semester {
   min-width: 60px;
 }
-._chapter{
+._chapter {
   min-width: 130px;
 }
-._unit{
+._unit {
   min-width: 130px;
 }
-._marks{
+._marks {
   min-width: 80px;
 }
-._priority{
+._priority {
   min-width: 130px;
 }
-._question{
+._question {
   min-width: 200px;
 }
-._edit{
+._edit {
   min-width: 130px;
 }
-._delete{
+._delete {
   min-width: 130px;
 }

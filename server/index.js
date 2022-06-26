@@ -8,8 +8,6 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 // const path = require("path");
 
-
-
 const initializePassport = require("./src/config/passportConfig");
 
 const {
@@ -27,6 +25,9 @@ const { view_all_questions } = require("./src/routes_function/view_questions");
 const { edit_page, edit_entry } = require("./src/routes_function/edit_entry");
 const { delete_entry } = require("./src/routes_function/delete_entry");
 const { add_entry } = require("./src/routes_function/add_entry");
+const {
+  generate_questions_2,
+} = require("./src/routes_function/generate_questions_2");
 
 initializePassport(passport);
 
@@ -42,7 +43,6 @@ app.use(
     saveUninitialized: false,
   })
 );
-
 
 // app.set('client/views', path.join(__dirname, 'client/views'));
 // app.set('client/partials', path.join(__dirname, 'client/partials'));
@@ -99,6 +99,14 @@ app.get("/users/logout", (req, res) => {
 app.put("/teacher_page/csv-to-db", (req, res) => {
   csv_to_db(req, res);
 });
+
+app.get(
+  "/teacher_page/generate-questions/:syllabus/:semester/:chapter",
+  checkAuthenticated,
+  (req, res) => {
+    generate_questions_2(req, res);
+  }
+);
 
 app.get(
   "/teacher_page/generate-questions/:syllabus/:semester",
@@ -163,6 +171,13 @@ app.get("/student_page", (req, res) => {
   // console.log(req.isAuthenticated());
   res.render("student_page.ejs", { path: req.url });
 });
+
+app.get(
+  "/student_page/generate-questions/:syllabus/:semester/:chapter",
+  (req, res) => {
+    generate_questions_2(req, res);
+  }
+);
 
 app.get("/student_page/generate-questions/:syllabus/:semester", (req, res) => {
   generate_questions(req, res);

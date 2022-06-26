@@ -1,6 +1,6 @@
 const pool = require("../config/dbConfig");
 
-exports.generate_questions = async (req, res) => {
+exports.generate_questions_2 = async (req, res) => {
   try {
     const current_url = req.url;
     const page_name = current_url.split("/");
@@ -8,10 +8,18 @@ exports.generate_questions = async (req, res) => {
 
     const { semester } = req.params;
     const { syllabus } = req.params;
+    const { chapter } = req.params;
 
+    const chapter_split = chapter.split("_");
+    const chapter_number = chapter_split[1];
     const syllabus_split = syllabus.split("");
 
-    const paper_code = "CS" + semester + syllabus_split[5] + syllabus_split[6];
+    const paper_code =
+      "CS" +
+      semester +
+      chapter_split[1] +
+      syllabus_split[5] +
+      syllabus_split[6];
 
     //GENERATING 2 MARK QUESTIONS--------------------------------------------------------------------------------------------------
 
@@ -23,8 +31,8 @@ exports.generate_questions = async (req, res) => {
     let generated_mark_2_arr = []; //randomly generated 2 mark questions
 
     const mark_2_questions = await pool.query(
-      "SELECT question FROM question_paper WHERE marks = 2 AND LOWER(syllabus) = $1 AND semester = $2",
-      [syllabus, semester]
+      "SELECT question FROM question_paper WHERE marks = 2 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $3",
+      [syllabus, semester, paper_code.toUpperCase()]
     );
 
     for (let i = 0; i < mark_2_questions.rows.length; i++) {
@@ -63,8 +71,8 @@ exports.generate_questions = async (req, res) => {
     //------------priority 3 mark 6-------------------------
 
     const priority_3_mark_6_questions = await pool.query(
-      "SELECT question FROM question_paper WHERE priority = 3 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
-      [syllabus, semester]
+      "SELECT question FROM question_paper WHERE priority = 3 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $3",
+      [syllabus, semester, paper_code.toUpperCase()]
     );
 
     for (let i = 0; i < priority_3_mark_6_questions.rows.length; i++) {
@@ -84,8 +92,8 @@ exports.generate_questions = async (req, res) => {
     //-----------priority 1 mark 6-----------------------------------
 
     const priority_1_mark_6_questions = await pool.query(
-      "SELECT question FROM question_paper WHERE priority = 1 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
-      [syllabus, semester]
+      "SELECT question FROM question_paper WHERE priority = 1 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $3",
+      [syllabus, semester, paper_code.toUpperCase()]
     );
 
     for (let i = 0; i < priority_1_mark_6_questions.rows.length; i++) {
@@ -131,7 +139,7 @@ exports.generate_questions = async (req, res) => {
           //selecting questions with priority 1 and 3
 
           all_mark_6_questions_1_3 = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN($3, $4, $5, $6) AND priority IN (1,3) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
+            "SELECT question FROM question_paper WHERE question NOT IN($3, $4, $5, $6) AND priority IN (1,3) AND UPPER(chapter) = $7 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
             [
               syllabus,
               semester,
@@ -139,20 +147,21 @@ exports.generate_questions = async (req, res) => {
               generated_priority_3_mark_6_arr[1],
               generated_priority_1_mark_6_arr[0],
               generated_priority_1_mark_6_arr[1],
+              paper_code.toUpperCase(),
             ]
           );
 
           //selecting questions with priority 2
 
           all_mark_6_questions_2 = await pool.query(
-            "SELECT question FROM question_paper WHERE priority = 2 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
-            [syllabus, semester]
+            "SELECT question FROM question_paper WHERE priority = 2 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $3",
+            [syllabus, semester, paper_code.toUpperCase()]
           );
         } else if (count_mark_6 == 2) {
           //selecting questions with priority 1 and 3
 
           all_mark_6_questions_1_3 = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN($3, $4, $5, $6, $7) AND priority IN (1,3) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
+            "SELECT question FROM question_paper WHERE question NOT IN($3, $4, $5, $6, $7) AND priority IN (1,3) AND UPPER(chapter) = $8 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
             [
               syllabus,
               semester,
@@ -161,20 +170,26 @@ exports.generate_questions = async (req, res) => {
               generated_priority_1_mark_6_arr[0],
               generated_priority_1_mark_6_arr[1],
               generated_mark_6_arr[0],
+              paper_code.toUpperCase(),
             ]
           );
 
           //selecting questions with priority 2
 
           all_mark_6_questions_2 = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN($3) AND priority = 2 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
-            [syllabus, semester, generated_mark_6_arr[0]]
+            "SELECT question FROM question_paper WHERE question NOT IN($3) AND priority = 2 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2  AND UPPER(chapter) = $4",
+            [
+              syllabus,
+              semester,
+              generated_mark_6_arr[0],
+              paper_code.toUpperCase(),
+            ]
           );
         } else if (count_mark_6 == 3) {
           //selecting questions with priority 1 and 3
 
           all_mark_6_questions_1_3 = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN($3, $4, $5, $6, $7, $8) AND priority IN (1,3) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
+            "SELECT question FROM question_paper WHERE question NOT IN($3, $4, $5, $6, $7, $8) AND priority IN (1,3) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2  AND UPPER(chapter) = $9",
             [
               syllabus,
               semester,
@@ -184,18 +199,20 @@ exports.generate_questions = async (req, res) => {
               generated_priority_1_mark_6_arr[1],
               generated_mark_6_arr[0],
               generated_mark_6_arr[1],
+              paper_code.toUpperCase(),
             ]
           );
 
           //selecting questions with priority 2
 
           all_mark_6_questions_2 = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN($3, $4) AND priority = 2 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
+            "SELECT question FROM question_paper WHERE question NOT IN($3, $4) AND priority = 2 AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $5",
             [
               syllabus,
               semester,
               generated_mark_6_arr[0],
               generated_mark_6_arr[1],
+              paper_code.toUpperCase(),
             ]
           );
         }
@@ -233,8 +250,8 @@ exports.generate_questions = async (req, res) => {
 
         //select all 4 mark questions
         const all_mark_4_questions = await pool.query(
-          "SELECT question FROM question_paper WHERE marks = 4 AND LOWER(syllabus) = $1 AND semester = $2",
-          [syllabus, semester]
+          "SELECT question FROM question_paper WHERE marks = 4 AND LOWER(syllabus) = $1 AND semester = $2  AND UPPER(chapter) = $3",
+          [syllabus, semester, paper_code.toUpperCase()]
         );
 
         for (let i = 0; i < all_mark_4_questions.rows.length; i++) {
@@ -245,7 +262,7 @@ exports.generate_questions = async (req, res) => {
 
         //select all 2 mark questions
         const all_mark_2_questions = await pool.query(
-          "SELECT question FROM question_paper WHERE question NOT IN ($3, $4, $5, $6, $7, $8, $9, $10, $11, $12) AND marks = 2 AND LOWER(syllabus) = $1 AND semester = $2",
+          "SELECT question FROM question_paper WHERE question NOT IN ($3, $4, $5, $6, $7, $8, $9, $10, $11, $12) AND marks = 2 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $13",
           [
             syllabus,
             semester,
@@ -259,6 +276,7 @@ exports.generate_questions = async (req, res) => {
             generated_mark_2_arr[7],
             generated_mark_2_arr[8],
             generated_mark_2_arr[9],
+            paper_code.toUpperCase(),
           ]
         );
 
@@ -292,8 +310,8 @@ exports.generate_questions = async (req, res) => {
         let temp_mark_3_arr = [];
 
         const all_mark_3_questions = await pool.query(
-          "SELECT question FROM question_paper WHERE marks = 3 AND LOWER(syllabus) = $1 AND semester = $2",
-          [syllabus, semester]
+          "SELECT question FROM question_paper WHERE marks = 3 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $3",
+          [syllabus, semester, paper_code.toUpperCase()]
         );
 
         for (let i = 0; i < all_mark_3_questions.rows.length; i++) {
@@ -318,7 +336,7 @@ exports.generate_questions = async (req, res) => {
         let temp_mark_2_arr = [];
 
         const all_mark_2_questions = await pool.query(
-          "SELECT question FROM question_paper WHERE question NOT IN ($3, $4, $5, $6, $7, $8, $9, $10, $11, $12) AND marks = 2 AND LOWER(syllabus) = $1 AND semester = $2",
+          "SELECT question FROM question_paper WHERE question NOT IN ($3, $4, $5, $6, $7, $8, $9, $10, $11, $12) AND marks = 2 AND LOWER(syllabus) = $1 AND semester = $2  AND UPPER(chapter) = $13",
           [
             syllabus,
             semester,
@@ -332,6 +350,8 @@ exports.generate_questions = async (req, res) => {
             generated_mark_2_arr[7],
             generated_mark_2_arr[8],
             generated_mark_2_arr[9],
+            // generated_mark_4_and_2_arr[1],
+            paper_code.toUpperCase(),
           ]
         );
 
@@ -397,7 +417,7 @@ exports.generate_questions = async (req, res) => {
 
         if (generated_mark_6_arr.length == 0) {
           all_mark_6_questions = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN ($3, $4,$5, $6) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
+            "SELECT question FROM question_paper WHERE question NOT IN ($3, $4,$5, $6) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2  AND UPPER(chapter) = $7",
             [
               syllabus,
               semester,
@@ -405,11 +425,12 @@ exports.generate_questions = async (req, res) => {
               generated_priority_3_mark_6_arr[1],
               generated_priority_1_mark_6_arr[0],
               generated_priority_1_mark_6_arr[1],
+              paper_code.toUpperCase(),
             ]
           );
         } else if (generated_mark_6_arr.length == 1) {
           all_mark_6_questions = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN ($3, $4,$5, $6, $7) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
+            "SELECT question FROM question_paper WHERE question NOT IN ($3, $4,$5, $6, $7) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2  AND UPPER(chapter) = $8",
             [
               syllabus,
               semester,
@@ -418,11 +439,12 @@ exports.generate_questions = async (req, res) => {
               generated_priority_1_mark_6_arr[0],
               generated_priority_1_mark_6_arr[1],
               generated_mark_6_arr[0],
+              paper_code.toUpperCase(),
             ]
           );
         } else if (generated_mark_6_arr.length == 2) {
           all_mark_6_questions = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN ($3, $4,$5, $6, $7, $8) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
+            "SELECT question FROM question_paper WHERE question NOT IN ($3, $4,$5, $6, $7, $8) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $9",
             [
               syllabus,
               semester,
@@ -432,11 +454,12 @@ exports.generate_questions = async (req, res) => {
               generated_priority_1_mark_6_arr[1],
               generated_mark_6_arr[0],
               generated_mark_6_arr[1],
+              paper_code.toUpperCase(),
             ]
           );
         } else if (generated_mark_6_arr.length == 3) {
           all_mark_6_questions = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN ($3, $4,$5, $6, $7, $8, $9) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2",
+            "SELECT question FROM question_paper WHERE question NOT IN ($3, $4,$5, $6, $7, $8, $9) AND marks = 6 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $10",
             [
               syllabus,
               semester,
@@ -447,19 +470,25 @@ exports.generate_questions = async (req, res) => {
               generated_mark_6_arr[0],
               generated_mark_6_arr[1],
               generated_mark_6_arr[2],
+              paper_code.toUpperCase(),
             ]
           );
         }
 
         if (generated_mark_4_and_2_arr.length == 0) {
           all_mark_4_questions = await pool.query(
-            "SELECT question FROM question_paper WHERE marks = 4 AND  LOWER(syllabus) = $1 AND semester = $2",
-            [syllabus, semester]
+            "SELECT question FROM question_paper WHERE marks = 4 AND  LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $3",
+            [syllabus, semester, paper_code.toUpperCase()]
           );
         } else if (generated_mark_4_and_2_arr.length == 2) {
           all_mark_4_questions = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN($3) AND marks = 4 AND  LOWER(syllabus) = $1 AND semester = $2",
-            [syllabus, semester, generated_mark_4_and_2_arr[0]]
+            "SELECT question FROM question_paper WHERE question NOT IN($3) AND marks = 4 AND  LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $4",
+            [
+              syllabus,
+              semester,
+              generated_mark_4_and_2_arr[0],
+              paper_code.toUpperCase(),
+            ]
           );
         }
 
@@ -506,13 +535,18 @@ exports.generate_questions = async (req, res) => {
 
         if (count_10_mark_10 == 1) {
           all_mark_10_questions = await pool.query(
-            "SELECT question FROM question_paper WHERE marks = 10 AND LOWER(syllabus) = $1 AND semester = $2",
-            [syllabus, semester]
+            "SELECT question FROM question_paper WHERE marks = 10 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $3",
+            [syllabus, semester, paper_code.toUpperCase()]
           );
         } else if (count_10_mark_10 == 2) {
           all_mark_10_questions = await pool.query(
-            "SELECT question FROM question_paper WHERE question NOT IN ($3) AND marks = 10 AND LOWER(syllabus) = $1 AND semester = $2",
-            [syllabus, semester, generated_all_mark_10_arr[0]]
+            "SELECT question FROM question_paper WHERE question NOT IN ($3) AND marks = 10 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $4",
+            [
+              syllabus,
+              semester,
+              generated_all_mark_10_arr[0],
+              paper_code.toUpperCase(),
+            ]
           );
         }
 
@@ -538,8 +572,8 @@ exports.generate_questions = async (req, res) => {
         let all_mark_5_questions;
 
         all_mark_5_questions = await pool.query(
-          "SELECT question FROM question_paper WHERE marks = 5 AND LOWER(syllabus) = $1 AND semester = $2",
-          [syllabus, semester]
+          "SELECT question FROM question_paper WHERE marks = 5 AND LOWER(syllabus) = $1 AND semester = $2 AND UPPER(chapter) = $3",
+          [syllabus, semester, paper_code.toUpperCase()]
         );
 
         for (let i = 0; i < all_mark_5_questions.rows.length; i++) {
@@ -642,7 +676,7 @@ exports.generate_questions = async (req, res) => {
         generator_mark_2_data: GENERATED_MARK_2_QUESTIONS,
         generator_mark_6_data: GENERATED_MARK_6_QUESTIONS,
         generator_mark_10_data: GENERATED_MARK_10_QUESTIONS,
-        paper_code: paper_code,
+        paper_code: paper_code.toUpperCase(),
         sem: semester,
       });
     } else if (page_file.includes("student_page")) {
@@ -651,7 +685,7 @@ exports.generate_questions = async (req, res) => {
         generator_mark_2_data: GENERATED_MARK_2_QUESTIONS,
         generator_mark_6_data: GENERATED_MARK_6_QUESTIONS,
         generator_mark_10_data: GENERATED_MARK_10_QUESTIONS,
-        paper_code: paper_code,
+        paper_code: paper_code.toUpperCase(),
         sem: semester,
       });
     }
