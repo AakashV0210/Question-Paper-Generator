@@ -6,6 +6,7 @@ const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
+// const upload = require("express-fileupload");
 // const path = require("path");
 
 const initializePassport = require("./src/config/passportConfig");
@@ -34,6 +35,7 @@ initializePassport(passport);
 app.set("views", "../client/views");
 app.set("view-engine", "ejs");
 
+// app.use(upload());
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(
@@ -43,9 +45,6 @@ app.use(
     saveUninitialized: false,
   })
 );
-
-// app.set('client/views', path.join(__dirname, 'client/views'));
-// app.set('client/partials', path.join(__dirname, 'client/partials'));
 
 app.use(express.static(__dirname.replace("server", "client/public")));
 
@@ -67,7 +66,7 @@ app.post(
   "/users/teacher_login",
   checkNotAuthenticated,
   passport.authenticate("local", {
-    successRedirect: "/teacher_page",
+    successRedirect: "/teacher_page/view-questions-all",
     failureRedirect: "/users/teacher_login",
     failureFlash: true,
   })
@@ -96,9 +95,29 @@ app.get("/users/logout", (req, res) => {
   });
 });
 
-app.put("/teacher_page/csv-to-db", (req, res) => {
+app.get("/teacher_page/csv-to-db", (req, res) => {
   csv_to_db(req, res);
 });
+// app.get("/upload", (req, res) => {
+//   res.sendFile(__dirname + "../client/views/teacher_page.ejs");
+// });
+// app.post("/upload", (req, res) => {
+//   if (req.files) {
+//     console.log(req.files);
+//     var file = req.files.file;
+//     var filename = file.name;
+//     console.log(filename);
+
+//     file.mv("./assets/" + filename, function (err) {
+//       if (err) {
+//         res.send(err);
+//       } else {
+//         res.send("file uploaded");
+//         res.redirect("/teacher_page/csv-to-db/" + filename);
+//       }
+//     });
+//   }
+// });
 
 app.get(
   "/teacher_page/generate-questions/:syllabus/:semester/:chapter",
