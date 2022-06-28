@@ -41,10 +41,6 @@
     </form>
     
   </div>
-  
-  <!-- <div id="generate_button" style="display: none;">
-    <a href="#" id="generate_question_paper">cgh </a>
-  </div> -->
 
   <% }else if(path.includes("generate-questions")){%>
   <div id="generated_questions">
@@ -101,15 +97,13 @@
   </div>
 
   <button>
-  <!-- <div  > 
-    <a href="/teacher_page/generate-question-view">BACK</a> -->
+
   <div>
     <% if(path.includes("teacher_page")){ %>
       <a href="/teacher_page/generate-question-view" class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer">BACK</a>
     <% } else { %>
       <a href="/student_page/generate-question-view" class="px-2 py-2 bg-slate-400 hover:bg-black font-bold cursor-pointer">BACK</a>
     <% } %>
-
     
   </div>
   </button> 

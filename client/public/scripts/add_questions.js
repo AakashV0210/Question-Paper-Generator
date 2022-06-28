@@ -19,7 +19,7 @@ function validate_question_add() {
 
   var is_valid1 = regex.test(syllabus);
   var is_valid2 = regex.test(chapter);
-  var is_valid3 = regex.test(question);
+  // var is_valid3 = regex.test(question);
 
   if (
     syllabus === "" ||
@@ -35,12 +35,11 @@ function validate_question_add() {
   } else if (marks == 7 || marks == 8 || marks == 9) {
     alert("You can only enter 2, 3, 4, 5, 6 and 10 mark questions");
     return false;
-  } else if (!is_valid1 || !is_valid2 || !is_valid3) {
+  } else if (!is_valid1 || !is_valid2) {
     alert("Cannot have special characters");
     return false;
   } else {
     submit_add();
-    // console.log("b");
   }
 }
 

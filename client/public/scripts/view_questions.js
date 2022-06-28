@@ -22,7 +22,6 @@ function select_syllabus() {
     if (radiobutton[i].checked) {
       filter = radiobutton[i].value;
       document.getElementById("syllabus").style.display = "block";
-      // console.log(filter);
     }
   }
 }
@@ -48,7 +47,6 @@ function select_semester() {
     if (radiobutton[i].checked) {
       filter = radiobutton[i].value;
       document.getElementById("semester").style.display = "block";
-      // console.log(filter);
     }
   }
 }
@@ -69,7 +67,6 @@ function validate_syllabus_and_semester() {
 
   if (count == 1) {
     view_questions_with_filter();
-    // console.log("a");
   } else {
     alert("You must select something!");
     return false;
@@ -108,9 +105,6 @@ function view_questions_with_filter() {
   const url = window.location.pathname;
   // console.log(url);
   const page_name = url.split("/");
-  // console.log(page_name);
-  // console.log(page_name[1]);
-  // console.log("a");
 
   const path =
     "/" + page_name[1] + "/view-questions/" + filter + "/" + filter_val;

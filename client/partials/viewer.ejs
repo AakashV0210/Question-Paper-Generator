@@ -84,19 +84,6 @@
   
   <!-- Printing the tables -->
   <% if(locals.userdata){ %>
-    <!-- <div class="text-black antialiased font-bold tracking-widest text-3xl">ALL QUESTIONS</div> -->
-    
-  <!-- <table class="table-auto border-double flex-auto">
-    <tr>
-      <th class="border px-4 py-2">Syllabus</th>
-      <th class="border px-4 py-2">Semester</th>
-      <th class="border px-4 py-2">Chapter</th>
-      <th class="border px-4 py-2">Unit</th>
-      <th class="border px-4 py-2">Marks</th>
-      <th class="border px-4 py-2">Priority</th>
-      <th class="border px-4 py-2">Question</th>
-      <th class="border px-4 py-2">Edit</th>
-      <th class="border px-4 py-2">Delete</th> -->
     
   <table class="table-auto border-double flex-auto">
     <tr>
@@ -114,18 +101,7 @@
     </tr>
 
     <% if(userdata.length!=0){ var i=1; userdata.forEach(function(data){ %>
-    <!-- <tr>
-      <td class="border px-4 py-2 text-center"><%=data.syllabus %></td>
-      <td class="border px-4 py-2 text-center"><%=data.semester %></td>
-      <td class="border px-4 py-2 text-center"><%=data.chapter %></td>
-      <td class="border px-4 py-2 text-center"><%=data.unit %></td>
-      <td class="border px-4 py-2 text-center"><%=data.marks %></td>
-      <td class="border px-4 py-2 text-center"><%=data.priority %></td>
-      <td class="border px-4 py-2 text-center"><%=data.question %></td>
-      <td class="border px-4 py-2 hover:bg-slate-200"><a href="/teacher_page/edit-page/<%=data.id%>">Edit</a></td>
-            <td class="border px-4 py-2 hover:bg-slate-200"><a href="/teacher_page/delete-entry/<%=data.id%>">Delete</a></td> -->
-      <!-- <td><a href="#">Edit</a></td>
-      <td><a href="#">Delete</a></td> -->
+
       <td class="border px-4 py-2 text-center"><%=data.syllabus %></td>
       <td class="border px-4 py-2 text-center"><%=data.semester %></td>
       <td class="border px-4 py-2 text-center"><%=data.chapter %></td>
@@ -148,7 +124,6 @@
 
   <!-- Edit data  -->
   <% if(locals.edit_data){ %>
-    <!-- <p><%=edit_data.id%></p>  -->
 
     <h3 class="text-lg">Edit the boxes to be modified</h3>
     <br><br>

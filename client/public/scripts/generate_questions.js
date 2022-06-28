@@ -4,10 +4,6 @@ let generator_semester_value,
 
 function display_generate_semester_form() {
   document.getElementById("question_generator_semester").style.display = "none";
-  // document.getElementById("question_generator_paper_sem_5").style.display =
-  //   "none";
-  // document.getElementById("question_generator_paper_sem_6").style.display =
-  //   "none";
 
   document.getElementById("question_generator_paper_selection").style.display =
     "none";
