@@ -27,7 +27,18 @@ exports.edit_entry = async (req, res) => {
   const { marks } = req.params;
   const { priority } = req.params;
   const { question } = req.params;
-
+  try {
+    await pool.query(
+      "UPDATE question_paper SET syllabus = $1, semester = $2, chapter = $3, unit = $4, marks = $5, priority = $6, question = $7 WHERE id = $8",
+      [syllabus, semester, chapter, unit, marks, priority, question, id]
+    );
+    return res.redirect("/teacher_page/view-questions-all");
+  } catch (error) {
+    throw error;
+  } finally {
+    // alert("This question already exists");
+    return res.redirect("/teacher_page/edit-page/" + id);
+  }
   await pool.query(
     "UPDATE question_paper SET syllabus = $1, semester = $2, chapter = $3, unit = $4, marks = $5, priority = $6, question = $7 WHERE id = $8",
     [syllabus, semester, chapter, unit, marks, priority, question, id]

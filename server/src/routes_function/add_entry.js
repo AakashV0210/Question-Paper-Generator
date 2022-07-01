@@ -8,15 +8,20 @@ exports.add_entry = async (req, res) => {
   const { marks } = req.params;
   const { priority } = req.params;
   const { question } = req.params;
+  try {
+    await pool.query(
+      "INSERT INTO question_paper (id, syllabus, semester, chapter, unit, marks, priority, question) VALUES (default, $1, $2, $3, $4, $5, $6, $7)",
+      [syllabus, semester, chapter, unit, marks, priority, question]
+    );
 
-  await pool.query(
-    "INSERT INTO question_paper (id, syllabus, semester, chapter, unit, marks, priority, question) VALUES (default, $1, $2, $3, $4, $5, $6, $7)",
-    [syllabus, semester, chapter, unit, marks, priority, question]
-  );
-
-  return res.render("teacher_page.ejs", {
-    user: req.user.name,
-    path: req.url,
-    add_data: "YOUR ENTRY HAS SUCCESSFULLY BEEN ADDED TO THE DATABASE!",
-  });
+    return res.render("teacher_page.ejs", {
+      user: req.user.name,
+      path: req.url,
+      add_data: "YOUR ENTRY HAS SUCCESSFULLY BEEN ADDED TO THE DATABASE!",
+    });
+  } catch (error) {
+    throw error;
+  } finally {
+    return res.redirect("/teacher_page/add-page");
+  }
 };
